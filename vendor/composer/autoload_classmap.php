@@ -653,6 +653,7 @@ return array(
     'Cloudinary\\Utils' => $vendorDir . '/cloudinary/cloudinary_php/src/Utils/Utils.php',
     'Cloudinary\\Utils\\SignatureVerifier' => $vendorDir . '/cloudinary/cloudinary_php/src/Utils/SignatureVerifier.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Dompdf\\Cpdf' => $vendorDir . '/dompdf/dompdf/lib/Cpdf.php',
     'Google_AccessToken_Revoke' => $vendorDir . '/google/apiclient/src/aliases.php',
     'Google_AccessToken_Verify' => $vendorDir . '/google/apiclient/src/aliases.php',
     'Google_AuthHandler_AuthHandlerFactory' => $vendorDir . '/google/apiclient/src/aliases.php',

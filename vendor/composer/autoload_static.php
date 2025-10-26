@@ -27,6 +27,7 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
+            'Svg\\' => 4,
             'SpomkyLabs\\Pki\\' => 15,
             'Spatie\\TemporaryDirectory\\' => 26,
         ),
@@ -45,6 +46,7 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         array (
             'Monolog\\' => 8,
             'Minishlink\\WebPush\\' => 19,
+            'Masterminds\\' => 12,
         ),
         'J' => 
         array (
@@ -61,12 +63,17 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         ),
         'F' => 
         array (
+            'FontLib\\' => 8,
             'Firebase\\JWT\\' => 13,
             'FFMpeg\\' => 7,
         ),
         'E' => 
         array (
             'Evenement\\' => 10,
+        ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
         ),
         'B' => 
         array (
@@ -103,6 +110,10 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         'Symfony\\Component\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
+        ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
         ),
         'SpomkyLabs\\Pki\\' => 
         array (
@@ -153,6 +164,10 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         array (
             0 => __DIR__ . '/..' . '/minishlink/web-push/src',
         ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
         'Jose\\Component\\' => 
         array (
             0 => __DIR__ . '/..' . '/web-token/jwt-library',
@@ -181,6 +196,10 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         array (
             0 => __DIR__ . '/..' . '/google/apiclient/src',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
@@ -193,6 +212,10 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         array (
             0 => __DIR__ . '/..' . '/evenement/evenement/src',
         ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
+        ),
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
@@ -204,6 +227,16 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         'Alchemy\\BinaryDriver\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-ffmpeg/php-ffmpeg/src/Alchemy/BinaryDriver',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Sabberworm\\CSS' => 
+            array (
+                0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
+            ),
         ),
     );
 
@@ -855,6 +888,7 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         'Cloudinary\\Utils' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Utils/Utils.php',
         'Cloudinary\\Utils\\SignatureVerifier' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Utils/SignatureVerifier.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Google_AccessToken_Revoke' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         'Google_AccessToken_Verify' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         'Google_AuthHandler_AuthHandlerFactory' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
@@ -883,6 +917,7 @@ class ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1::$prefixesPsr0;
             $loader->classMap = ComposerStaticInita5bd80fa23473f9e8aa9f9380b7f65f1::$classMap;
 
         }, null, ClassLoader::class);

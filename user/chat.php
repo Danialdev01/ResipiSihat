@@ -79,11 +79,39 @@ function extractKeywords($conversation) {
                         SEKIRANYA pengguna tidak menyatakan spesifik kaedah masakan seperti goreng MAKA JANGAN letakkan kaedah masakan sebagai kata kunci seperti goreng, rebus.
                         CONTOH YANG SALAH : "rendah kalori * protein" ATAU " makanan tengahhari * nasi " pastikan kata kunci tersebut dalam bentuk perkataan seperti "nasi, makanan tengahhari, kabohidrat"
                         PASTIKAN di dalam output tiada simbol lain seperti * atau \ atau "
+
+                        JANGAN BUAT AYAT PENDAHULUAN, TERUS BAGI KATA KUNCI.
                         '
         ],
         [
             "role" => "user",
-            "content" => "Dari percakapan berikut, ekstrak 3-5 kata kunci utama untuk pencarian resepi:\n\n" . $formattedConv
+            "content" => 'Dari percakapan berikut, ekstrak 3-5 kata kunci utama untuk pencarian resepi: Pastikan output dalam Bahasa Melayu.
+                        Berdasarkan input pengguna, pastikan kata kunci tersebut mempunyai kaitan dengan percakapan pengguna.
+                        Fokus pada: bahan utama, jenis masakan, kategori (contoh: ayam, sayur, rendah kalori, vegetarian, makanan Itali). 
+                        Keluarkan HANYA kata kunci penting dalam bentuk senarai dipisahkan koma.
+                        Berikan jenis bahan yang terlibat, jenis kategori makanan, kata kunci makanan, dan jenis makanan.
+
+                        Contoh sekiranya makanan tinggi kalori ("berikan saya contoh resepi yang berasaskan ayam"): MAKA output tersebut akan menjadi "ayam, tinggi protein, makanan tengahhari, protein"
+
+                        Contoh sekiranya makanan rendah kalori ("berikan saya contoh resepi yang boleh merendahkan berat badan"): "salad, rendah kalori, makanan tengahhari, sayur"
+
+                        Contoh sekiranya makanan mengikut kaedah masakan ("berikan saya contoh resepi melibatkan kaedah goreng"): "goreng, makanan tengahhari"
+
+                        Contoh sekiranya makanan mengikut jenis bahan ("berikan saya contoh resepi nasi"): "nasi, makanan tengahhari, kabohidrat"
+
+                        Sekiranya pengguna masukkan input "Saya hendak kuruskan badan, apa contoh resepi yang sesuai" MAKA output "salad, sayuran, rendah kalori"
+
+                        Sekiranya pengguna masukkan input "Saya hendak bina badan, apa contoh resepi yang sesuai" MAKA output "ayam, ikan, tinggi kalori"
+
+                        PENTING: Berikan kata kunci dalam bentuk perkataan SAHAJA.
+                        JANGAN libatkan cara pemasakan KECUALI sekiranya pengguna menyatakan ia secara spesifik.
+                        PENTING: Hanya berikan output dalam bentuk perkataan kecil seperti contoh : "ayam, tinggi kalori, ikan,"
+                        PASTIKAN Bahan utama terdapat dalam kata kunci utama.
+                        SEKIRANYA pengguna tidak menyatakan spesifik kaedah masakan seperti goreng MAKA JANGAN letakkan kaedah masakan sebagai kata kunci seperti goreng, rebus.
+                        CONTOH YANG SALAH : "rendah kalori * protein" ATAU " makanan tengahhari * nasi " pastikan kata kunci tersebut dalam bentuk perkataan seperti "nasi, makanan tengahhari, kabohidrat"
+                        PASTIKAN di dalam output tiada simbol lain seperti * atau \ atau "
+
+                        JANGAN BUAT AYAT PENDAHULUAN, TERUS BAGI KATA KUNCI.' . $formattedConv
         ]
     ];
 
@@ -265,7 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     
                 } catch (PDOException $e) {
                     // Tangani error
-                    $aiResponse .= "\n\n[Error: Gagal menyimpan ke database]";
+                    // $aiResponse .= "\n\n[Error: Gagal menyimpan ke database]";
                 }
                 
                 // Return response dalam format JSON
@@ -408,37 +436,44 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                             <?php if (!empty($recipes)): ?>
                                                 <div class="space-y-6">
                                                     <?php foreach ($recipes as $recipe): ?>
-                                                        <div class="recipe-card border border-gray-200 rounded-xl overflow-hidden hover:shadow-md">
-                                                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48 flex items-center justify-center text-gray-400">
-                                                                <i class="fas fa-image text-4xl"></i>
-                                                            </div>
-                                                            <div class="p-4">
-                                                                <div class="flex justify-between items-start">
-                                                                    <h3 class="font-bold text-lg text-gray-800"><?= htmlspecialchars($recipe['name_recipe']) ?></h3>
-                                                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                                                                        <?= htmlspecialchars($recipe['calories_recipe']) ?> kkal
-                                                                    </span>
+                                                        <a href="resepi/?id=<?php echo $recipe['id_recipe']?>">
+
+                                                            <div class="recipe-card border border-gray-200 rounded-xl overflow-hidden hover:shadow-md">
+                                                                <div class="bg-gray-200 border-2 overflow-hidden rounded-xl w-full h-48 flex items-center justify-center text-gray-400">
+                                                                    <img 
+                                                                        src="<?php echo htmlspecialchars(formatImagePath($recipe['image_recipe'], "../"))?>" 
+                                                                        alt="<?php echo htmlspecialchars($recipe['name_recipe'])?>"
+                                                                        class="w-full object-cover"
+                                                                    />
                                                                 </div>
-                                                                <p class="text-gray-600 text-sm mt-2"><?= htmlspecialchars(substr($recipe['desc_recipe'], 0, 100)) ?>...</p>
-                                                                
-                                                                <div class="flex justify-between mt-4 text-sm">
-                                                                    <div>
-                                                                        <i class="fas fa-clock text-gray-500 mr-1"></i>
-                                                                        <span><?= htmlspecialchars($recipe['cooking_time_recipe']) ?> minit</span>
+                                                                <div class="p-4">
+                                                                    <div class="flex justify-between items-start">
+                                                                        <h3 class="font-bold text-lg text-gray-800"><?= htmlspecialchars($recipe['name_recipe']) ?></h3>
+                                                                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                                            <?= htmlspecialchars($recipe['calories_recipe']) ?> kkal
+                                                                        </span>
                                                                     </div>
-                                                                    <div>
-                                                                        <i class="fas fa-heart text-red-500 mr-1"></i>
-                                                                        <span><?= htmlspecialchars($recipe['num_likes_recipe']) ?> suka</span>
+                                                                    <p class="text-gray-600 text-sm mt-2"><?= htmlspecialchars(substr($recipe['desc_recipe'], 0, 100)) ?>...</p>
+                                                                    
+                                                                    <div class="flex justify-between mt-4 text-sm">
+                                                                        <div>
+                                                                            <i class="fas fa-clock text-gray-500 mr-1"></i>
+                                                                            <span><?= htmlspecialchars($recipe['cooking_time_recipe']) ?> minit</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <i class="fas fa-heart text-red-500 mr-1"></i>
+                                                                            <span><?= htmlspecialchars($recipe['num_likes_recipe']) ?> suka</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="mt-4">
+                                                                        <button class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg transition flex items-center justify-center">
+                                                                            <i class="fas fa-book-open mr-2"></i> Lihat Resepi Lengkap
+                                                                        </button>
                                                                     </div>
                                                                 </div>
-                                                                
-                                                                <div class="mt-4">
-                                                                    <button class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg transition flex items-center justify-center">
-                                                                        <i class="fas fa-book-open mr-2"></i> Lihat Resepi Lengkap
-                                                                    </button>
-                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     <?php endforeach; ?>
                                                 </div>
                                             <?php else: ?>
@@ -573,37 +608,43 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                     let recipeCards = '';
                     recipes.forEach(recipe => {
                         recipeCards += `
-                            <div class="recipe-card border border-gray-200 rounded-xl overflow-hidden hover:shadow-md">
-                                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-48 flex items-center justify-center text-gray-400">
-                                    <i class="fas fa-image text-4xl"></i>
-                                </div>
-                                <div class="p-4">
-                                    <div class="flex justify-between items-start">
-                                        <h3 class="font-bold text-lg text-gray-800">${recipe.name_recipe}</h3>
-                                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                                            ${recipe.calories_recipe} kkal
-                                        </span>
+                            <a href="resepi/?id=${recipe.id_recipe}">
+                                <div class="recipe-card border border-gray-200 rounded-xl overflow-hidden hover:shadow-md">
+                                    <div class="bg-gray-200 border-2 overflow-hidden rounded-xl w-full h-48 flex items-center justify-center text-gray-400">
+                                        <img 
+                                            src="../uploads/recipes/${recipe.image_recipe}" 
+                                            alt="${recipe.name_recipe}"
+                                            class="w-full h-[350px] object-cover"
+                                        />
                                     </div>
-                                    <p class="text-gray-600 text-sm mt-2">${recipe.desc_recipe.substring(0, 100)}...</p>
-                                    
-                                    <div class="flex justify-between mt-4 text-sm">
-                                        <div>
-                                            <i class="fas fa-clock text-gray-500 mr-1"></i>
-                                            <span>${recipe.cooking_time_recipe} minit</span>
+                                    <div class="p-4">
+                                        <div class="flex justify-between items-start">
+                                            <h3 class="font-bold text-lg text-gray-800">${recipe.name_recipe}</h3>
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                                ${recipe.calories_recipe} kkal
+                                            </span>
                                         </div>
-                                        <div>
-                                            <i class="fas fa-heart text-red-500 mr-1"></i>
-                                            <span>${recipe.num_likes_recipe} suka</span>
+                                        <p class="text-gray-600 text-sm mt-2">${recipe.desc_recipe.substring(0, 100)}...</p>
+                                        
+                                        <div class="flex justify-between mt-4 text-sm">
+                                            <div>
+                                                <i class="fas fa-clock text-gray-500 mr-1"></i>
+                                                <span>${recipe.cooking_time_recipe} minit</span>
+                                            </div>
+                                            <div>
+                                                <i class="fas fa-heart text-red-500 mr-1"></i>
+                                                <span>${recipe.num_likes_recipe} suka</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+                                            <button class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg transition flex items-center justify-center">
+                                                <i class="fas fa-book-open mr-2"></i> Lihat Resepi Lengkap
+                                            </button>
                                         </div>
                                     </div>
-                                    
-                                    <div class="mt-4">
-                                        <button class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg transition flex items-center justify-center">
-                                            <i class="fas fa-book-open mr-2"></i> Lihat Resepi Lengkap
-                                        </button>
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         `;
                     });
                     

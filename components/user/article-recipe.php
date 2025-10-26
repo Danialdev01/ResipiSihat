@@ -169,10 +169,12 @@
                         <span id="success-tooltip-message" class="hidden">Copied!</span>
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
-                    <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200">
-                        <i class="fa fa-print mr-2"></i>
-                        Cetak
-                    </button>
+                    <a href="<?php echo $location_index?>/user/resepi/cetak.php?id=<?php echo $recipe['id_recipe']?>">
+                        <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200">
+                            <i class="fa fa-print mr-2"></i>
+                            Cetak
+                        </button>
+                    </a>
 
                     <?php 
 
@@ -227,7 +229,7 @@
                             foreach ($ingredients as $ingredient) {
                                 echo '<div class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 transition-colors">';
                                 echo '<div class="w-2 h-2 rounded-full bg-primary-600 mt-2 shrink-0"></div>';
-                                echo '<span class="text-sm leading-relaxed">'. htmlspecialchars($ingredient['quantity']) .' '. htmlspecialchars($ingredient['name']) .'</span>';
+                                echo '<span class="text-sm leading-relaxed">'. htmlspecialchars($ingredient['quantity']) .' '. htmlspecialchars($ingredient['unit']) .' '. htmlspecialchars($ingredient['name']) .'</span>';
                                 echo '</div>';
                             }
                             

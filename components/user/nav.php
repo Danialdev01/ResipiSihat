@@ -48,7 +48,7 @@
             <i class="fas fa-robot text-gray-500 mr-3 w-5 text-center"></i>
             Nasihat Pemakanan
         </a>
-        <a href="<?php echo $location_index?>/user/pembelian.php" class="<?php setActive('pembelian.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
+        <a href="<?php echo $location_index?>/user/pembelian/" class="<?php setActive('pembelian.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-shopping-cart text-gray-500 mr-3 w-5 text-center"></i>
             Senarai Belian
         </a>

@@ -53,12 +53,37 @@
                             <div class="sm:col-span-2">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Bahan-bahan</label>
                                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-300">
-                                    <div class="grid grid-cols-1 md:grid-cols-5 gap-2 mb-4">
-                                        <div class="md:col-span-3">
+                                    <div class="grid grid-cols-1 md:grid-cols-6 gap-2 mb-4 md:flex">
+                                        <div class="md:col-span-2 w-full">
                                             <input type="text" id="ingredientName" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Nama bahan (contoh: Bawang)">
                                         </div>
-                                        <div class="md:col-span-1">
-                                            <input type="text" id="ingredientQuantity" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Kuantiti (contoh: 2 biji)">
+                                        <div class="md:col-span-1 w-full">
+                                            <input type="number" step="0.01" id="ingredientQuantity" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Kuantiti (contoh: 2)" min="0">
+                                        </div>
+                                        <div class="md:col-span-1 w-full">
+                                            <select id="ingredientUnit" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                                                <option value="">Pilih Unit</option>
+                                                <option value="secukup rasa">secukup rasa</option>
+                                                <option value="biji">biji</option>
+                                                <option value="ekor">ekor</option>
+                                                <option value="cawan">cawan</option>
+                                                <option value="sudu">sudu</option>
+                                                <option value="sendok">sendok</option>
+                                                <option value="kg">kg</option>
+                                                <option value="g">g</option>
+                                                <option value="ml">ml</option>
+                                                <option value="liter">liter</option>
+                                                <option value="keping">keping</option>
+                                                <option value="helai">helai</option>
+                                                <option value="ulas">ulas</option>
+                                                <option value="batang">batang</option>
+                                                <option value="ketul">ketul</option>
+                                                <option value="cubit">cubit</option>
+                                                <option value="lain-lain">lain-lain</option>
+                                            </select>
+                                        </div>
+                                        <div class="md:col-span-1 hidden" id="customUnitContainer">
+                                            <input type="text" id="customUnit" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Unit lain">
                                         </div>
                                         <div class="md:col-span-1">
                                             <button type="button" id="addIngredientBtn" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Tambah</button>
@@ -72,6 +97,7 @@
                                                 <tr>
                                                     <th scope="col" class="px-4 py-3">Bahan</th>
                                                     <th scope="col" class="px-4 py-3">Kuantiti</th>
+                                                    <th scope="col" class="px-4 py-3">Unit</th>
                                                     <th scope="col" class="px-4 py-3">Tindakan</th>
                                                 </tr>
                                             </thead>
@@ -190,9 +216,42 @@
                 const addIngredientBtn = document.getElementById('addIngredientBtn');
                 const ingredientNameInput = document.getElementById('ingredientName');
                 const ingredientQuantityInput = document.getElementById('ingredientQuantity');
+                const ingredientUnitSelect = document.getElementById('ingredientUnit');
+                const customUnitContainer = document.getElementById('customUnitContainer');
+                const customUnitInput = document.getElementById('customUnit');
                 const ingredientsTable = document.getElementById('ingredientsTable').getElementsByTagName('tbody')[0];
                 const noIngredientsMsg = document.getElementById('noIngredientsMsg');
                 const ingredientsData = document.getElementById('ingredientsData');
+                
+                // Show custom unit input when "lain-lain" is selected
+                ingredientUnitSelect.addEventListener('change', function() {
+                    if (this.value === 'lain-lain') {
+                        customUnitContainer.classList.remove('hidden');
+                        customUnitInput.focus();
+                    } else {
+                        customUnitContainer.classList.add('hidden');
+                        customUnitInput.value = '';
+                    }
+                    
+                    // Handle "secukup rasa" selection
+                    if (this.value === 'secukup rasa') {
+                        ingredientQuantityInput.value = '';
+                        ingredientQuantityInput.disabled = true;
+                        ingredientQuantityInput.placeholder = 'secukup rasa';
+                    } else {
+                        ingredientQuantityInput.disabled = false;
+                        ingredientQuantityInput.placeholder = 'Kuantiti (contoh: 2)';
+                    }
+                });
+                
+                // Function to get the selected unit
+                function getSelectedUnit() {
+                    if (ingredientUnitSelect.value === 'lain-lain') {
+                        return customUnitInput.value.trim();
+                    } else {
+                        return ingredientUnitSelect.value;
+                    }
+                }
                 
                 // Function to update the hidden input with ingredients data
                 function updateIngredientsData() {
@@ -200,16 +259,25 @@
                 }
                 
                 // Function to add ingredient to the list
-                function addIngredient(name, quantity) {
-                    if (!name.trim() || !quantity.trim()) {
-                        alert('Sila isi nama dan kuantiti bahan.');
+                function addIngredient(name, quantity, unit) {
+                    if (!name.trim()) {
+                        alert('Sila isi nama bahan.');
+                        return;
+                    }
+                    
+                    // Handle "secukup rasa" case
+                    if (unit === 'secukup rasa') {
+                        quantity = 'secukup rasa';
+                    } else if (!quantity || !unit.trim()) {
+                        alert('Sila isi kuantiti dan unit bahan.');
                         return;
                     }
                     
                     const ingredient = {
                         id: Date.now(), // unique identifier
                         name: name.trim(),
-                        quantity: quantity.trim()
+                        quantity: unit === 'secukup rasa' ? 'secukup rasa' : parseFloat(quantity),
+                        unit: unit.trim()
                     };
                     
                     ingredients.push(ingredient);
@@ -220,6 +288,7 @@
                     row.innerHTML = `
                         <td class="px-4 py-2 font-medium text-gray-900">${ingredient.name}</td>
                         <td class="px-4 py-2">${ingredient.quantity}</td>
+                        <td class="px-4 py-2">${ingredient.unit}</td>
                         <td class="px-4 py-2">
                             <button type="button" class="remove-ingredient text-red-600 hover:text-red-800">Buang</button>
                         </td>
@@ -239,6 +308,11 @@
                     // Clear input fields
                     ingredientNameInput.value = '';
                     ingredientQuantityInput.value = '';
+                    ingredientUnitSelect.value = '';
+                    customUnitContainer.classList.add('hidden');
+                    customUnitInput.value = '';
+                    ingredientQuantityInput.disabled = false;
+                    ingredientQuantityInput.placeholder = 'Kuantiti (contoh: 2)';
                     ingredientNameInput.focus();
                 }
                 
@@ -267,14 +341,21 @@
                 
                 // Event listener for add ingredient button
                 addIngredientBtn.addEventListener('click', function() {
-                    addIngredient(ingredientNameInput.value, ingredientQuantityInput.value);
+                    addIngredient(ingredientNameInput.value, ingredientQuantityInput.value, getSelectedUnit());
                 });
                 
-                // Allow adding ingredient with Enter key in quantity field
-                ingredientQuantityInput.addEventListener('keypress', function(e) {
+                // Allow adding ingredient with Enter key in unit field
+                ingredientUnitSelect.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        addIngredient(ingredientNameInput.value, ingredientQuantityInput.value);
+                        addIngredient(ingredientNameInput.value, ingredientQuantityInput.value, getSelectedUnit());
+                    }
+                });
+                
+                customUnitInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        addIngredient(ingredientNameInput.value, ingredientQuantityInput.value, getSelectedUnit());
                     }
                 });
                 
