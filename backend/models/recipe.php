@@ -57,7 +57,7 @@ function createRecipe($id_user, $name_recipe, $image_recipe, $desc_recipe, $cate
     }
     catch(Exception $e){
 
-        return encodeObj("400", "Ralat hasilkan resepi. $e", "error");
+        return encodeObj("400", "Ralat hasilkan resipi. $e", "error");
 
     }
 
@@ -97,7 +97,7 @@ function likeRecipe($id_recipe, $id_user, $type, $connect){
 
             updateNumLikesRecipe($id_recipe, 1 , $connect);
 
-            return encodeObj("200", "Like resepi", "success");
+            return encodeObj("200", "Like resipi", "success");
 
         }
         else if($type == "dislike"){
@@ -110,7 +110,7 @@ function likeRecipe($id_recipe, $id_user, $type, $connect){
 
             updateNumLikesRecipe($id_recipe, -1, $connect);
 
-            return encodeObj("200", "Dislike resepi", "success");
+            return encodeObj("200", "Dislike resipi", "success");
 
         }
         else{
@@ -123,7 +123,7 @@ function likeRecipe($id_recipe, $id_user, $type, $connect){
     }
     catch(Exception $e){
 
-        return encodeObj("400", "Ralat like resepi", "error");
+        return encodeObj("400", "Ralat like resipi", "error");
 
     }
 
@@ -144,7 +144,7 @@ function bookmarkRecipe($id_recipe, $id_user, $type, $connect){
                 ":id_recipe" => $id_recipe
             ]);
 
-            return encodeObj("200", "Simpan resepi", "success");
+            return encodeObj("200", "Simpan resipi", "success");
 
         }
         else if($type == "disbookmark"){
@@ -155,7 +155,7 @@ function bookmarkRecipe($id_recipe, $id_user, $type, $connect){
                 ":id_user" => $id_user
             ]);
 
-            return encodeObj("200", "Buang simpanan resepi", "success");
+            return encodeObj("200", "Buang simpanan resipi", "success");
 
         }
         else{
@@ -168,7 +168,29 @@ function bookmarkRecipe($id_recipe, $id_user, $type, $connect){
     }
     catch(Exception $e){
 
-        return encodeObj("400", "Ralat simpan resepi. $e", "error");
+        return encodeObj("400", "Ralat simpan resipi. $e", "error");
+
+    }
+
+}
+
+//delete bookmark
+function deleteBookmarkRecipe($id_recipe, $id_user, $connect){
+
+    try{
+
+        $delete_bookmark_sql = $connect->prepare("DELETE FROM bookmarks WHERE id_recipe = :id_recipe AND id_user = :id_user"); 
+        $delete_bookmark_sql->execute([
+            ":id_recipe" => $id_recipe,
+            ":id_user" => $id_user
+        ]);
+
+        return encodeObj("200", "Berjaya buang simpanan resipi", "success");
+
+    }
+    catch(Exception $e){
+
+        return encodeObj("400", "Ralat buang simpanan resipi. $e", "error");
 
     }
 
@@ -192,7 +214,7 @@ function commentRecipe($id_recipe, $id_user, $text_comment, $connect){
                 ':comment_text' => $text_comment
             ]);
 
-            return encodeObj("200", "Berjaya komen resepi", "success");
+            return encodeObj("200", "Berjaya komen resipi", "success");
 
 
         }
@@ -203,7 +225,7 @@ function commentRecipe($id_recipe, $id_user, $text_comment, $connect){
 
     }
     catch(Exception $e){
-        return encodeObj("400", "Ralat komen resepi. $e", "error");
+        return encodeObj("400", "Ralat komen resipi. $e", "error");
 
     }
 

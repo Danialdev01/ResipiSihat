@@ -19,17 +19,17 @@
                         
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                             <div class="sm:col-span-2">
-                                <label for="name_recipe" class="block mb-2 text-sm font-medium text-gray-900">Nama Resepi</label>
+                                <label for="name_recipe" class="block mb-2 text-sm font-medium text-gray-900">Nama Resipi</label>
                                 <input type="text" name="name_recipe" id="name_recipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Contoh: Ayam masak kicap" required>
                             </div>
                             <div class="sm:col-span-2">
-                                <label for="desc_recipe" class="block mb-2 text-sm font-medium text-gray-900">Tentang Resepi</label>
-                                <input type="text" name="desc_recipe" id="desc_recipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Resepi ayam yang mudah dan sedap untuk dimakan" required>
+                                <label for="desc_recipe" class="block mb-2 text-sm font-medium text-gray-900">Tentang Resipi</label>
+                                <input type="text" name="desc_recipe" id="desc_recipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Resipi ayam yang mudah dan sedap untuk dimakan" required>
                             </div>
                             
                             <!-- Recipe Image Upload Section -->
                             <div class="sm:col-span-2">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">Gambar Resepi</label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Gambar Resipi</label>
                                 <div class="flex items-center justify-center w-full">
                                     <label for="recipeImage" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                                         <div class="flex flex-col items-center justify-center pt-5 pb-6" id="uploadPlaceholder">
@@ -128,7 +128,7 @@
                                 <input type="text" name="url_resource_recipe" id="url_resource_recipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="https://www.youtube.com/embed/tZq7Ws7Yo5o?si=4BngHZJqbUubAyCA">
                             </div>
                             <div>
-                                <label for="visibility_recipe" class="block mb-2 text-sm font-medium text-gray-900">Jenis Resepi</label>
+                                <label for="visibility_recipe" class="block mb-2 text-sm font-medium text-gray-900">Jenis Resipi</label>
                                 <select id="visibility_recipe" name="visibility_recipe" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                                     <option value="1" selected>Boleh Dilihat awam</option>
                                     <option value="2">Persendirian</option>
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <button type="submit" name="create_recipe" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200">
-                            Tambah Resepi
+                            Tambah Resipi
                         </button>
                     </form>
                 </div>
@@ -370,7 +370,7 @@
                     // Validate image is uploaded
                     if (!recipeImageInput.files || recipeImageInput.files.length === 0) {
                         e.preventDefault();
-                        alert('Sila muat naik gambar untuk resepi ini.');
+                        alert('Sila muat naik gambar untuk resipi ini.');
                         recipeImageInput.focus();
                     }
                 });

@@ -31,7 +31,7 @@
                                 ResepiSihat bermula pada tahun 2020 dengan misi untuk menjadikan pemakanan sihat lebih mudah diakses oleh semua orang. Kami percaya bahawa makanan yang baik adalah asas kepada kehidupan yang sihat dan bahagia.
                             </p>
                             <p class="text-gray-600 mb-4">
-                                Bermula dari sekumpulan kecil penggemar makanan sihat, kami berkembang menjadi komuniti yang besar dengan ribuan resepi yang disemak oleh pakar pemakanan.
+                                Bermula dari sekumpulan kecil penggemar makanan sihat, kami berkembang menjadi komuniti yang besar dengan ribuan resipi yang disemak oleh pakar pemakanan.
                             </p>
                             <p class="text-gray-600">
                                 Hari ini, ResepiSihat digunakan oleh beribu-ribu orang setiap hari untuk merancang makanan mereka, mengurangkan pembaziran, dan menikmati hidangan yang lebih sihat.

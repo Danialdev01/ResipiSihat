@@ -9,11 +9,9 @@
                     Atasi masalah seperti kesukaran mengetahui bahan yang perlu dibeli, mencari idea baharu, menentukan sukatan hidangan yang sesuai, serta mengawal tabiat makan berlebihan.
                 </p>
                 <div class="mt-8 flex flex-col sm:flex-row sm:space-x-4">
-                    <a href="<?php echo $location_index?>/user">
-                        <button class="mb-4 sm:mb-0 btn-primary bg-primary-600 hover:bg-primary-700 text-white px-8 py-3.5 rounded-lg font-medium text-lg">
-                            Mula Sekarang
-                        </button>
-                    </a>
+                    <button data-modal-target="signin-modal" data-modal-toggle="signin-modal" class="mb-4 sm:mb-0 btn-primary bg-primary-600 hover:bg-primary-700 text-white px-8 py-3.5 rounded-lg font-medium text-lg">
+                        Mula Sekarang
+                    </button>
                     <button class="flex items-center justify-center px-8 py-3.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition">
                         <i class="fas fa-play-circle text-primary-600 mr-2 text-xl"></i>
                         Lihat Demo
@@ -25,13 +23,13 @@
                     <div class="bg-primary-100 p-2 rounded-lg mr-3">
                         <i class="fas fa-check-circle text-primary-700 text-xl"></i>
                     </div>
-                    <div class="text-gray-700">Pengurusan bahan & resepi</div>
+                    <div class="text-gray-700">Pengurusan bahan & resipi</div>
                 </div>
                 <div class="flex items-center">
                     <div class="bg-primary-100 p-2 rounded-lg mr-3">
                         <i class="fas fa-check-circle text-primary-700 text-xl"></i>
                     </div>
-                    <div class="text-gray-700">Jana resepi rawak harian</div>
+                    <div class="text-gray-700">Jana resipi rawak harian</div>
                 </div>
                 <div class="flex items-center">
                     <div class="bg-primary-100 p-2 rounded-lg mr-3">
@@ -57,7 +55,7 @@
                             <i class="fas fa-heart text-secondary-600 text-2xl"></i>
                         </div>
                         <div>
-                            <div class="font-bold text-gray-900">Resepi Pilihan Hari Ini</div>
+                            <div class="font-bold text-gray-900">Resipi Pilihan Hari Ini</div>
                             <div class="text-primary-600 font-medium">Salad Quinoa Mediterranean</div>
                         </div>
                         </div>

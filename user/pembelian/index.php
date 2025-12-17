@@ -8,7 +8,7 @@ include('../../components/head.php');
     <?php include("../../components/user/header.php")?>
     <?php 
     
-    // Dapatkan resepi yang di-bookmark oleh pengguna
+    // Dapatkan resipi yang di-bookmark oleh pengguna
     $sql = "SELECT r.*, b.created_date_bookmark 
             FROM recipes r 
             INNER JOIN bookmarks b ON r.id_recipe = b.id_recipe 
@@ -54,9 +54,9 @@ include('../../components/head.php');
                         </p>
                     </div>
 
-                    <!-- Senarai Resepi Bookmark -->
+                    <!-- Senarai Resipi Bookmark -->
                     <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-xl font-bold mb-4">Resepi yang Disimpan</h2>
+                        <h2 class="text-xl font-bold mb-4">Resipi yang Disimpan</h2>
                         
                         <?php if (count($bookmarked_recipes) > 0): ?>
                             <table id="default-table" class="w-full text-sm text-left text-gray-500">
@@ -64,7 +64,7 @@ include('../../components/head.php');
                                     <tr>
                                         <th>
                                             <span class="flex items-center">
-                                                Nama Resepi
+                                                Nama Resipi
                                                 <svg class="w-4 h-4 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                                 </svg>
@@ -112,11 +112,14 @@ include('../../components/head.php');
                                                 <?php echo $recipe['cooking_time_recipe']; ?> minit
                                             </td>
                                             <td class="px-6 py-4">
-                                                <button type="button" 
-                                                        onclick="removeBookmark('<?php echo $recipe['id_recipe']; ?>')" 
-                                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2">
-                                                    Buang
-                                                </button>
+                                                <form action="../../backend/recipe.php" method="post">
+                                                    <input type="hidden" name="id_recipe" value="<?php echo $recipe['id_recipe']; ?>">
+                                                    <input type="hidden" name="token" value="<?php echo $token?>">
+                                                    <button type="submit" name="delete_bookmark_recipe"  
+                                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2">
+                                                        Buang
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -124,10 +127,10 @@ include('../../components/head.php');
                             </table>
                         <?php else: ?>
                             <div class="text-center py-8">
-                                <p class="text-gray-500">Tiada resepi yang disimpan lagi.</p>
-                                <a href="<?php echo $location_index; ?>/user/resepi/" 
+                                <p class="text-gray-500">Tiada resipi yang disimpan lagi.</p>
+                                <a href="<?php echo $location_index; ?>/user/resipi/" 
                                    class="inline-block mt-4 text-blue-600 hover:underline">
-                                    Cari Resepi
+                                    Cari Resipi
                                 </a>
                             </div>
                         <?php endif; ?>
@@ -152,7 +155,7 @@ include('../../components/head.php');
 
         // Fungsi untuk buang bookmark
         function removeBookmark(recipeId) {
-            if (confirm('Adakah anda pasti ingin membuang resepi ini dari bookmark?')) {
+            if (confirm('Adakah anda pasti ingin membuang resipi ini dari bookmark?')) {
                 const formData = new FormData();
                 formData.append('recipe_id', recipeId);
                 formData.append('remove_bookmark', 'true');
@@ -165,15 +168,15 @@ include('../../components/head.php');
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Resepi berjaya dikeluarkan dari bookmark.');
+                        alert('Resipi berjaya dikeluarkan dari bookmark.');
                         location.reload();
                     } else {
-                        alert('Gagal mengeluarkan resepi: ' + (data.error || 'Sila cuba lagi.'));
+                        alert('Gagal mengeluarkan resipi: ' + (data.error || 'Sila cuba lagi.'));
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Ralat berlaku ketika mengeluarkan resepi.');
+                    alert('Ralat berlaku ketika mengeluarkan resipi.');
                 });
             }
         }

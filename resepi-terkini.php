@@ -6,7 +6,7 @@
         <?php $location_index = "."; require('./components/home/nav.php')?>
 
 
-        <section id="resepi-terkini" class="pt-20">
+        <section id="resipi-terkini" class="pt-20">
             <center>
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <br><br>
@@ -18,7 +18,7 @@
                     </p>
                 </div>
             </center>
-            <?php $location_index = "."; require('./components/home/resepi-terkini.php')?>
+            <?php $location_index = "."; require('./components/home/resipi-terkini.php')?>
         </section>
     </main>
 

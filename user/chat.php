@@ -60,17 +60,17 @@ function extractKeywords($conversation) {
                         Keluarkan HANYA kata kunci penting dalam bentuk senarai dipisahkan koma.
                         Berikan jenis bahan yang terlibat, jenis kategori makanan, kata kunci makanan, dan jenis makanan.
 
-                        Contoh sekiranya makanan tinggi kalori ("berikan saya contoh resepi yang berasaskan ayam"): MAKA output tersebut akan menjadi "ayam, tinggi protein, makanan tengahhari, protein"
+                        Contoh sekiranya makanan tinggi kalori ("berikan saya contoh resipi yang berasaskan ayam"): MAKA output tersebut akan menjadi "ayam, tinggi protein, makanan tengahhari, protein"
 
-                        Contoh sekiranya makanan rendah kalori ("berikan saya contoh resepi yang boleh merendahkan berat badan"): "salad, rendah kalori, makanan tengahhari, sayur"
+                        Contoh sekiranya makanan rendah kalori ("berikan saya contoh resipi yang boleh merendahkan berat badan"): "salad, rendah kalori, makanan tengahhari, sayur"
 
-                        Contoh sekiranya makanan mengikut kaedah masakan ("berikan saya contoh resepi melibatkan kaedah goreng"): "goreng, makanan tengahhari"
+                        Contoh sekiranya makanan mengikut kaedah masakan ("berikan saya contoh resipi melibatkan kaedah goreng"): "goreng, makanan tengahhari"
 
-                        Contoh sekiranya makanan mengikut jenis bahan ("berikan saya contoh resepi nasi"): "nasi, makanan tengahhari, kabohidrat"
+                        Contoh sekiranya makanan mengikut jenis bahan ("berikan saya contoh resipi nasi"): "nasi, makanan tengahhari, kabohidrat"
 
-                        Sekiranya pengguna masukkan input "Saya hendak kuruskan badan, apa contoh resepi yang sesuai" MAKA output "salad, sayuran, rendah kalori"
+                        Sekiranya pengguna masukkan input "Saya hendak kuruskan badan, apa contoh resipi yang sesuai" MAKA output "salad, sayuran, rendah kalori"
 
-                        Sekiranya pengguna masukkan input "Saya hendak bina badan, apa contoh resepi yang sesuai" MAKA output "ayam, ikan, tinggi kalori"
+                        Sekiranya pengguna masukkan input "Saya hendak bina badan, apa contoh resipi yang sesuai" MAKA output "ayam, ikan, tinggi kalori"
 
                         PENTING: Berikan kata kunci dalam bentuk perkataan SAHAJA.
                         JANGAN libatkan cara pemasakan KECUALI sekiranya pengguna menyatakan ia secara spesifik.
@@ -85,23 +85,23 @@ function extractKeywords($conversation) {
         ],
         [
             "role" => "user",
-            "content" => 'Dari percakapan berikut, ekstrak 3-5 kata kunci utama untuk pencarian resepi: Pastikan output dalam Bahasa Melayu.
+            "content" => 'Dari percakapan berikut, ekstrak 3-5 kata kunci utama untuk pencarian resipi: Pastikan output dalam Bahasa Melayu.
                         Berdasarkan input pengguna, pastikan kata kunci tersebut mempunyai kaitan dengan percakapan pengguna.
                         Fokus pada: bahan utama, jenis masakan, kategori (contoh: ayam, sayur, rendah kalori, vegetarian, makanan Itali). 
                         Keluarkan HANYA kata kunci penting dalam bentuk senarai dipisahkan koma.
                         Berikan jenis bahan yang terlibat, jenis kategori makanan, kata kunci makanan, dan jenis makanan.
 
-                        Contoh sekiranya makanan tinggi kalori ("berikan saya contoh resepi yang berasaskan ayam"): MAKA output tersebut akan menjadi "ayam, tinggi protein, makanan tengahhari, protein"
+                        Contoh sekiranya makanan tinggi kalori ("berikan saya contoh resipi yang berasaskan ayam"): MAKA output tersebut akan menjadi "ayam, tinggi protein, makanan tengahhari, protein"
 
-                        Contoh sekiranya makanan rendah kalori ("berikan saya contoh resepi yang boleh merendahkan berat badan"): "salad, rendah kalori, makanan tengahhari, sayur"
+                        Contoh sekiranya makanan rendah kalori ("berikan saya contoh resipi yang boleh merendahkan berat badan"): "salad, rendah kalori, makanan tengahhari, sayur"
 
-                        Contoh sekiranya makanan mengikut kaedah masakan ("berikan saya contoh resepi melibatkan kaedah goreng"): "goreng, makanan tengahhari"
+                        Contoh sekiranya makanan mengikut kaedah masakan ("berikan saya contoh resipi melibatkan kaedah goreng"): "goreng, makanan tengahhari"
 
-                        Contoh sekiranya makanan mengikut jenis bahan ("berikan saya contoh resepi nasi"): "nasi, makanan tengahhari, kabohidrat"
+                        Contoh sekiranya makanan mengikut jenis bahan ("berikan saya contoh resipi nasi"): "nasi, makanan tengahhari, kabohidrat"
 
-                        Sekiranya pengguna masukkan input "Saya hendak kuruskan badan, apa contoh resepi yang sesuai" MAKA output "salad, sayuran, rendah kalori"
+                        Sekiranya pengguna masukkan input "Saya hendak kuruskan badan, apa contoh resipi yang sesuai" MAKA output "salad, sayuran, rendah kalori"
 
-                        Sekiranya pengguna masukkan input "Saya hendak bina badan, apa contoh resepi yang sesuai" MAKA output "ayam, ikan, tinggi kalori"
+                        Sekiranya pengguna masukkan input "Saya hendak bina badan, apa contoh resipi yang sesuai" MAKA output "ayam, ikan, tinggi kalori"
 
                         PENTING: Berikan kata kunci dalam bentuk perkataan SAHAJA.
                         JANGAN libatkan cara pemasakan KECUALI sekiranya pengguna menyatakan ia secara spesifik.
@@ -149,7 +149,7 @@ function extractKeywords($conversation) {
     return array_slice($keywords, 0, 5); // Ambil maksimal 5 kata kunci
 }
 
-// Fungsi untuk mencari resepi berdasarkan kata kunci
+// Fungsi untuk mencari resipi berdasarkan kata kunci
 function searchRecipesByKeywords($keywords) {
     global $connect;
     
@@ -186,7 +186,7 @@ if (!isset($_SESSION['conversation'])) {
             'role' => 'system',
             'content' => '
                      **Peranan Anda:** 
-                        Anda adalah Pakar Pemakanan Berlesen dan AI Assistant Resepi Sihat. Tugas anda adalah membantu pengguna mencari resepi yang paling sesuai berdasarkan keperluan pemakanan, citarasa, dan gaya hidup mereka.
+                        Anda adalah Pakar Pemakanan Berlesen dan AI Assistant Resipi Sihat. Tugas anda adalah membantu pengguna mencari resipi yang paling sesuai berdasarkan keperluan pemakanan, citarasa, dan gaya hidup mereka.
 
                         **Langkah Analisis Wajib:**
                         1. **Kenal pasti Profil Pengguna** (tanya jika tidak lengkap):
@@ -204,14 +204,14 @@ if (!isset($_SESSION['conversation'])) {
                         - "Adakah anda mengikuti diet khusus? (Contoh: halal, vegetarian, rendah gluten)"
                         - "Berapa lama masa memasak yang anda ada?"
 
-                        4. **Cadangkan Resepi Berdasarkan:**
+                        4. **Cadangkan Resipi Berdasarkan:**
                         - Kesesuaian dengan profil kesihatan pengguna
                         - Keseimbangan nutrisi (gunakan Piramid Makanan Malaysia)
                         - Kemudahan penyediaan dan bahan
 
                         **Format Respons:**
                         [PENILAIAN NUTRISI] 
-                        "Resepi ini sesuai kerana: 
+                        "Resipi ini sesuai kerana: 
                         - Rendah karbohidrat (hanya 35g) sesuai untuk pesakit diabetes 
                         - Tinggi protein (25g) membantu pembinaan otot 
                         - Menggunakan minyak zaitun yang baik untuk jantung"
@@ -272,7 +272,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 // EKSTRAK KATA KUNCI DARI PERCAKAPAN
                 $keywords = extractKeywords($_SESSION['conversation']);
                 
-                // Cari resepi berdasarkan kata kunci
+                // Cari resipi berdasarkan kata kunci
                 $recipes = searchRecipesByKeywords($keywords);
                 
                 // Simpan ke database
@@ -281,7 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     if (!isset($_SESSION['id_chat'])) {
                         $stmt = $connect->prepare("INSERT INTO chats (id_user, title_chat, created_date_chat, status_chat) 
                                                VALUES (?, ?, NOW(), 'active')");
-                        $title = "Pencarian Resepi: " . substr($userMessage, 0, 50);
+                        $title = "Pencarian Resipi: " . substr($userMessage, 0, 50);
                         $stmt->execute([1, $title]); // id_user sementara = 1
                         $_SESSION['id_chat'] = $connect->lastInsertId();
                     }
@@ -323,7 +323,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $_SESSION['conversation'] = [
             [
                 'role' => 'system',
-                'content' => 'Anda adalah asisten ahli gizi dan koki profesional. Bantu pengguna menemukan resepi makanan sehat berdasarkan preferensi, bahan yang tersedia, kebutuhan diet, dan waktu memasak. Berikan saran yang praktis dan sehat dalam bahasa Melayu.'
+                'content' => 'Anda adalah asisten ahli gizi dan koki profesional. Bantu pengguna menemukan resipi makanan sehat berdasarkan preferensi, bahan yang tersedia, kebutuhan diet, dan waktu memasak. Berikan saran yang praktis dan sehat dalam bahasa Melayu.'
             ]
         ];
         
@@ -372,16 +372,16 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                                             <i class="fas fa-robot text-4xl text-primary"></i>
                                                         </div>
                                                         <h3 class="text-xl font-bold text-gray-700">Hai, saya AI Penasihat pemakanan anda !</h3>
-                                                        <p class="text-gray-600 mt-2">Sila sampaikan keperluan resepi anda. Contoh:</p>
+                                                        <p class="text-gray-600 mt-2">Sila sampaikan keperluan resipi anda. Contoh:</p>
                                                         <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
-                                                                "Resepi sarapan tinggi protein"
+                                                                "Resipi sarapan tinggi protein"
                                                             </div>
                                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
                                                                 "Makan tengah hari rendah kalori dengan ayam"
                                                             </div>
                                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
-                                                                "Resepi vegetarian untuk pemula"
+                                                                "Resipi vegetarian untuk pemula"
                                                             </div>
                                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
                                                                 "Makanan penutup sihat tanpa gula"
@@ -414,13 +414,13 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                             
                                             <form id="chat-form" class="mt-6">
                                                 <div class="flex">
-                                                    <input type="text" id="user-message" name="message" placeholder="Ketik permintaan resepi anda..." 
+                                                    <input type="text" id="user-message" name="message" placeholder="Ketik permintaan resipi anda..." 
                                                            class="flex-grow px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
                                                     <button type="submit" id="send-button" class="bg-primary-500 hover:bg-secondary-500 text-white px-6 rounded-r-lg transition">
                                                         <i class="fas fa-paper-plane"></i>
                                                     </button>
                                                 </div>
-                                                <p class="text-gray-500 text-sm mt-2">Contoh: "Resepi makan tengah hari rendah kalori dengan ayam"</p>
+                                                <p class="text-gray-500 text-sm mt-2">Contoh: "Resipi makan tengah hari rendah kalori dengan ayam"</p>
                                             </form>
                                         </div>
                                     </div>
@@ -431,12 +431,12 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                         <div id="keywords-section"></div>
                                         
                                         <!-- Recipe Results -->
-                                        <h2 class="text-xl font-bold text-gray-800 mb-6">Rekomendasi Resepi</h2>
+                                        <h2 class="text-xl font-bold text-gray-800 mb-6">Rekomendasi Resipi</h2>
                                         <div id="recipe-results" class="recipe-results">
                                             <?php if (!empty($recipes)): ?>
                                                 <div class="space-y-6">
                                                     <?php foreach ($recipes as $recipe): ?>
-                                                        <a href="resepi/?id=<?php echo $recipe['id_recipe']?>">
+                                                        <a href="resipi/?id=<?php echo $recipe['id_recipe']?>">
 
                                                             <div class="recipe-card border border-gray-200 rounded-xl overflow-hidden hover:shadow-md">
                                                                 <div class="bg-gray-200 border-2 overflow-hidden rounded-xl w-full h-48 flex items-center justify-center text-gray-400">
@@ -468,7 +468,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                                                     
                                                                     <div class="mt-4">
                                                                         <button class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg transition flex items-center justify-center">
-                                                                            <i class="fas fa-book-open mr-2"></i> Lihat Resepi Lengkap
+                                                                            <i class="fas fa-book-open mr-2"></i> Lihat Resipi Lengkap
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -481,8 +481,8 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                                     <div class="inline-block bg-gray-100 rounded-full p-4 mb-4">
                                                         <i class="fas fa-utensils text-3xl text-primary"></i>
                                                     </div>
-                                                    <h3 class="text-lg font-bold text-gray-700">Rekomendasi Resepi</h3>
-                                                    <p class="text-gray-600 mt-2">Resepi yang disyorkan akan muncul di sini</p>
+                                                    <h3 class="text-lg font-bold text-gray-700">Rekomendasi Resipi</h3>
+                                                    <p class="text-gray-600 mt-2">Resipi yang disyorkan akan muncul di sini</p>
                                                 </div>
                                             <?php endif; ?>
                                         </div>
@@ -565,7 +565,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                     let badges = '';
                     keywords.forEach(keyword => {
                         badges += `
-                            <a href="./resepi/komuniti.php?search=${keyword}">
+                            <a href="./resipi/komuniti.php?search=${keyword}">
                                 <span class="keyword-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center">
                                     <i class="fas fa-tag mr-1 text-xs"></i> ${keyword}
                                 </span>
@@ -590,7 +590,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                     $('#keywords-section').html(html);
                 }
                 
-                // Fungsi untuk menampilkan resepi
+                // Fungsi untuk menampilkan resipi
                 function updateRecipes(recipes) {
                     if (recipes.length === 0) {
                         $('#recipe-results').html(`
@@ -598,7 +598,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                 <div class="inline-block bg-gray-100 rounded-full p-4 mb-4">
                                     <i class="fas fa-search text-3xl text-primary"></i>
                                 </div>
-                                <h3 class="text-lg font-bold text-gray-700">Resepi tidak ditemui</h3>
+                                <h3 class="text-lg font-bold text-gray-700">Resipi tidak ditemui</h3>
                                 <p class="text-gray-600 mt-2">Sila cuba dengan kata kunci yang berbeza</p>
                             </div>
                         `);
@@ -608,7 +608,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                     let recipeCards = '';
                     recipes.forEach(recipe => {
                         recipeCards += `
-                            <a href="resepi/?id=${recipe.id_recipe}">
+                            <a href="resipi/?id=${recipe.id_recipe}">
                                 <div class="recipe-card border border-gray-200 rounded-xl overflow-hidden hover:shadow-md">
                                     <div class="bg-gray-200 border-2 overflow-hidden rounded-xl w-full h-48 flex items-center justify-center text-gray-400">
                                         <img 
@@ -639,7 +639,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                         
                                         <div class="mt-4">
                                             <button class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-lg transition flex items-center justify-center">
-                                                <i class="fas fa-book-open mr-2"></i> Lihat Resepi Lengkap
+                                                <i class="fas fa-book-open mr-2"></i> Lihat Resipi Lengkap
                                             </button>
                                         </div>
                                     </div>
@@ -692,7 +692,7 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                 // Tampilkan kata kunci
                                 updateKeywords(response.keywords);
                                 
-                                // Tampilkan resepi
+                                // Tampilkan resipi
                                 updateRecipes(response.recipes);
                             } else {
                                 appendAiMessage(response.error);
@@ -724,17 +724,17 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                         <div class="inline-block bg-gray-200 rounded-full p-4 mb-4">
                                             <i class="fas fa-robot text-4xl text-primary"></i>
                                         </div>
-                                        <h3 class="text-xl font-bold text-gray-700">Hai, saya Asisten Resepi Sehat AI</h3>
-                                        <p class="text-gray-600 mt-2">Sila sampaikan keperluan resepi anda. Contoh:</p>
+                                        <h3 class="text-xl font-bold text-gray-700">Hai, saya Asisten Resipi Sehat AI</h3>
+                                        <p class="text-gray-600 mt-2">Sila sampaikan keperluan resipi anda. Contoh:</p>
                                         <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
-                                                "Resepi sarapan tinggi protein"
+                                                "Resipi sarapan tinggi protein"
                                             </div>
                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
                                                 "Makan tengah hari rendah kalori dengan ayam"
                                             </div>
                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
-                                                "Resepi vegetarian untuk pemula"
+                                                "Resipi vegetarian untuk pemula"
                                             </div>
                                             <div class="bg-white rounded-lg p-3 text-sm shadow">
                                                 "Makanan penutup sihat tanpa gula"
@@ -743,15 +743,15 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                     </div>
                                 `);
                                 
-                                // Reset kata kunci dan resepi
+                                // Reset kata kunci dan resipi
                                 $('#keywords-section').html('');
                                 $('#recipe-results').html(`
                                     <div class="text-center py-10">
                                         <div class="inline-block bg-gray-100 rounded-full p-4 mb-4">
                                             <i class="fas fa-utensils text-3xl text-primary"></i>
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-700">Rekomendasi Resepi</h3>
-                                        <p class="text-gray-600 mt-2">Resepi yang disyorkan akan muncul di sini</p>
+                                        <h3 class="text-lg font-bold text-gray-700">Rekomendasi Resipi</h3>
+                                        <p class="text-gray-600 mt-2">Resipi yang disyorkan akan muncul di sini</p>
                                     </div>
                                 `);
                             }

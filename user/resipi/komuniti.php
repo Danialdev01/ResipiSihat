@@ -15,7 +15,7 @@
             
             <!-- Main Dashboard Content -->
             <div class="p-6">
-                <?php $location_index = "../.."; require('../../components/home/resepi-terkini.php')?>
+                <?php $location_index = "../.."; require('../../components/home/resipi-terkini.php')?>
             </div>
         </div>
     </div>

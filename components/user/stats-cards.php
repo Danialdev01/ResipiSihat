@@ -13,11 +13,11 @@ function getUserRecipeLikes($userId, $connect) {
 
 <!-- Stats Cards -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    <a href="<?php echo $location_index?>/user/resepi/saya.php">
+    <a href="<?php echo $location_index?>/user/resipi/saya.php">
         <div class="card bg-white rounded-xl p-5">
             <div class="flex items-center justify-between">
                 <div>
-                    <div class="text-gray-500">Jumlah Resepi</div>
+                    <div class="text-gray-500">Jumlah Resipi</div>
 
                     <?php 
                         $bil_resepi_sql = $connect->prepare("SELECT COUNT(*) AS bil_resepi, created_date_recipe FROM recipes WHERE id_user = :id_user");
@@ -58,7 +58,7 @@ function getUserRecipeLikes($userId, $connect) {
     <div class="card bg-white rounded-xl p-5">
         <div class="flex items-center justify-between">
             <div>
-                <div class="text-gray-500">Resepi disuka orang lain</div>
+                <div class="text-gray-500">Resipi disuka orang lain</div>
                 <div class="text-2xl font-bold mt-1"><?php echo getUserRecipeLikes($user['id_user'], $connect)?></div>
             </div>
             <div class="bg-blue-100 p-3 rounded-lg">

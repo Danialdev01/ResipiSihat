@@ -18,9 +18,9 @@
                     <div class="feature-icon bg-green-100 p-3 rounded-xl w-14 h-14 flex items-center justify-center mb-4">
                         <i class="fas fa-clipboard-list text-green-600 text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Pengurusan Bahan & Resepi</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Pengurusan Bahan & Resipi</h3>
                     <p class="text-gray-600 text-sm">
-                        Susun senarai bahan berdasarkan resepi pilihan dan dapatkan cadangan belian runcit secara automatik.
+                        Susun senarai bahan berdasarkan resipi pilihan dan dapatkan cadangan belian runcit secara automatik.
                     </p>
                 </div>
                 
@@ -29,9 +29,9 @@
                     <div class="feature-icon bg-green-100 p-3 rounded-xl w-14 h-14 flex items-center justify-center mb-4">
                         <i class="fas fa-random text-green-600 text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Jana Resepi Rawak</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Jana Resipi Rawak</h3>
                     <p class="text-gray-600 text-sm">
-                        Dapatkan idea masakan baharu setiap hari dengan fungsi penjanaan resepi secara rawak berdasarkan pilihan anda.
+                        Dapatkan idea masakan baharu setiap hari dengan fungsi penjanaan resipi secara rawak berdasarkan pilihan anda.
                     </p>
                 </div>
                 
@@ -42,7 +42,7 @@
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">Cadangan Pintar</h3>
                     <p class="text-gray-600 text-sm">
-                        Sistem akan mencadangkan resepi berdasarkan bahan yang sedia ada di dapur anda, mengelakkan pembaziran.
+                        Sistem akan mencadangkan resipi berdasarkan bahan yang sedia ada di dapur anda, mengelakkan pembaziran.
                     </p>
                 </div>
                 
@@ -62,9 +62,9 @@
                     <div class="feature-icon bg-green-100 p-3 rounded-xl w-14 h-14 flex items-center justify-center mb-4">
                         <i class="fas fa-share-alt text-green-600 text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Perkongsian Resepi</h3>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Perkongsian Resipi</h3>
                     <p class="text-gray-600 text-sm">
-                        Kongsi resepi sihat anda dengan komuniti dan dapatkan inspirasi daripada pengguna lain.
+                        Kongsi resipi sihat anda dengan komuniti dan dapatkan inspirasi daripada pengguna lain.
                     </p>
                 </div>
                 
@@ -88,9 +88,9 @@
                 <div class="feature-icon bg-green-100 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
                     <i class="fas fa-clipboard-list text-green-700 text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Pengurusan Bahan & Resepi</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Pengurusan Bahan & Resipi</h3>
                 <p class="text-gray-600 mb-4">
-                    Susun senarai bahan berdasarkan resepi pilihan dan dapatkan cadangan belian runcit secara automatik.
+                    Susun senarai bahan berdasarkan resipi pilihan dan dapatkan cadangan belian runcit secara automatik.
                 </p>
             </div>
             
@@ -99,9 +99,9 @@
                 <div class="feature-icon bg-green-100 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
                     <i class="fas fa-random text-green-700 text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Jana Resepi Rawak</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Jana Resipi Rawak</h3>
                 <p class="text-gray-600 mb-4">
-                    Dapatkan idea masakan baharu setiap hari dengan fungsi penjanaan resepi secara rawak berdasarkan pilihan anda.
+                    Dapatkan idea masakan baharu setiap hari dengan fungsi penjanaan resipi secara rawak berdasarkan pilihan anda.
                 </p>
             </div>
             
@@ -112,7 +112,7 @@
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-3">Cadangan Pintar</h3>
                 <p class="text-gray-600 mb-4">
-                    Sistem akan mencadangkan resepi berdasarkan bahan yang sedia ada di dapur anda, mengelakkan pembaziran.
+                    Sistem akan mencadangkan resipi berdasarkan bahan yang sedia ada di dapur anda, mengelakkan pembaziran.
                 </p>
             </div>
             
@@ -132,9 +132,9 @@
                 <div class="feature-icon bg-green-100 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
                     <i class="fas fa-share-alt text-green-700 text-2xl"></i>
                 </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Perkongsian Resepi</h3>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Perkongsian Resipi</h3>
                 <p class="text-gray-600 mb-4">
-                    Kongsi resepi sihat anda dengan komuniti dan dapatkan inspirasi daripada pengguna lain.
+                    Kongsi resipi sihat anda dengan komuniti dan dapatkan inspirasi daripada pengguna lain.
                 </p>
             </div>
             

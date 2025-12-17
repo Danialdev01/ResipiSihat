@@ -9,7 +9,7 @@
     include '../backend/functions/csrf-token.php';
     include '../backend/models/recipe.php';
 
-    checkCSRFToken();
+    // checkCSRFToken();
 
     //@ Create recipe
     if(isset($_POST['create_recipe'])){
@@ -43,7 +43,7 @@
 
         }
         catch(Exception $e){
-            redirectWithAlert("../", "error", "Ralat hasilkan resepi");
+            redirectWithAlert("../", "error", "Ralat hasilkan resipi");
         }
     }
 
@@ -109,6 +109,36 @@
 
     }
 
+    // delete bookmark recipe
+    else if(isset($_POST['delete_bookmark_recipe'])){
+
+        try{
+
+            $id_recipe = validateInput($_POST['id_recipe']);
+            
+            $user = decryptUser($_SESSION[$token_name], $secret_key);
+            $id_user = $user['id_user'];
+            
+            $deleteBookmarkRecipe = deleteBookmarkRecipe($id_recipe, $id_user, $connect);
+            $deleteBookmarkRecipe = json_decode($deleteBookmarkRecipe, true);
+
+            if($deleteBookmarkRecipe['status'] == "success"){
+                
+                alert_message("success", "Berjaya buang simpanan resipi");
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+            else{
+                redirectWithAlert("../", "error", $deleteBookmarkRecipe['message']);
+            }
+
+        }
+        catch(Exception $e){
+            redirectWithAlert("../", "error", "Login Error");
+        }
+
+    }
+
+
     //@ Comment recipe 
     else if(isset($_POST['comment_recipe'])){
 
@@ -168,7 +198,7 @@
                 header("Location:../user/");
             }
             else{
-                redirectWithAlert("../", "error", "Resepi bukan milik pengguna");
+                redirectWithAlert("../", "error", "Resipi bukan milik pengguna");
             }
 
         }

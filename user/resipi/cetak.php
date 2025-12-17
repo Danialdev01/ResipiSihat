@@ -4,17 +4,19 @@ session_start();
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-$connect = new PDO('mysql:host=localhost;dbname=resepisihat', 'root', 'danialdev');
+
+$connect = new PDO('mysql:host=localhost;dbname=resipisihat', 'root', 'danialdev');
+
 require __DIR__ . "../../../vendor/autoload.php";
 
-// Dapatkan ID resepi dari URL
+// Dapatkan ID resipi dari URL
 $recipe_id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 if (!$recipe_id) {
-    die("Error: ID resepi diperlukan");
+    die("Error: ID resipi diperlukan");
 }
 
-// Dapatkan data resepi
+// Dapatkan data resipi
 $sql = "SELECT r.*, u.name_user 
         FROM recipes r 
         LEFT JOIN users u ON r.id_user = u.id_user 
@@ -23,9 +25,9 @@ $stmt = $connect->prepare($sql);
 $stmt->execute([':recipe_id' => $recipe_id]);
 $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Semak jika resepi wujud
+// Semak jika resipi wujud
 if (!$recipe) {
-    die("Error: Resepi tidak ditemukan");
+    die("Error: Resipi tidak ditemukan");
 }
 
 // Decode bahan-bahan
@@ -248,8 +250,8 @@ if (!empty($recipe['url_resource_recipe'])) {
 
 $html .= '
         <div class="footer">
-            <p>Dicetak dari ResepiSihat pada ' . date('d/m/Y H:i') . '</p>
-            <p>© ' . date('Y') . ' ResepiSihat - Semua hak cipta terpelihara</p>
+            <p>Dicetak dari ResipiSihat pada ' . date('d/m/Y H:i') . '</p>
+            <p>© ' . date('Y') . ' ResipiSihat - Semua hak cipta terpelihara</p>
         </div>
     </div>
 </body>
@@ -269,7 +271,7 @@ $dompdf->loadHtml($html);
 $dompdf->render();
 
 // Output PDF
-$filename = "resepi_" . preg_replace('/[^a-zA-Z0-9]/', '_', $recipe['name_recipe']) . "_" . date('Y-m-d') . ".pdf";
+$filename = "resipi_" . preg_replace('/[^a-zA-Z0-9]/', '_', $recipe['name_recipe']) . "_" . date('Y-m-d') . ".pdf";
 $dompdf->stream($filename, [
     "Attachment" => 0
 ]);

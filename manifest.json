@@ -1,6 +1,6 @@
 {
   "short_name": "ResepiSihat",
-  "name": "Resepi Sihat",
+  "name": "Resipi Sihat",
   "icons": [
     {
       "src": "icons/icon-48x48.png",
@@ -59,7 +59,7 @@
   "scope": "/",
   "theme_color": "#0d1017",
   "id": "resepiSihat",
-  "description": "Resepi Sihat",
+  "description": "Resipi Sihat",
   "lang": "ms",
   "orientation": "portrait",
   "categories": [

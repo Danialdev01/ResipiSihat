@@ -161,7 +161,7 @@
         
                     <button data-tooltip-target="tooltip-url-shortener" data-copy-to-clipboard-target="url-shortener" class="focus:ring-4 focus:ring-primary-300 focus:bg-primary-50 inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-green-50 hover:text-green-600 hover:border-green-200">
                         <i class="far fa-share-square mr-2"></i>
-                        <input id="url-shortener" type="text" aria-describedby="helper-text-explanation" class="hidden" value="<?php echo $domain . "/user/resepi/?id=" . $recipe['id_recipe'] ?>" readonly disabled />
+                        <input id="url-shortener" type="text" aria-describedby="helper-text-explanation" class="hidden" value="<?php echo $domain . "/user/resipi/?id=" . $recipe['id_recipe'] ?>" readonly disabled />
                         Kongsi
                     </button>
                     <div id="tooltip-url-shortener" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
@@ -169,7 +169,7 @@
                         <span id="success-tooltip-message" class="hidden">Copied!</span>
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
-                    <a href="<?php echo $location_index?>/user/resepi/cetak.php?id=<?php echo $recipe['id_recipe']?>">
+                    <a href="<?php echo $location_index?>/user/resipi/cetak.php?id=<?php echo $recipe['id_recipe']?>">
                         <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200">
                             <i class="fa fa-print mr-2"></i>
                             Cetak

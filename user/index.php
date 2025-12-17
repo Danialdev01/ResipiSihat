@@ -26,7 +26,7 @@
                         <div class="card bg-white rounded-xl p-6 mb-6">
                             <div class="flex justify-between items-center mb-6">
                                 <h3 class="text-xl font-bold text-gray-900">Terkini</h3>
-                                <a href="<?php echo $location_index?>/user/resepi/komuniti.php">
+                                <a href="<?php echo $location_index?>/user/resipi/komuniti.php">
                                     <button class="text-primary-600 hover:text-primary-800 font-medium">
                                         Lihat <i class="fas fa-arrow-right ml-1"></i>
                                     </button>
@@ -45,7 +45,7 @@
                                     while($resepi_terkini = $resepi_terkini_sql->fetch(PDO::FETCH_ASSOC)){
                                         ?>
 
-                                        <a href="./resepi/?id=<?php echo $resepi_terkini['id_recipe']?>" class="meal-card bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
+                                        <a href="./resipi/?id=<?php echo $resepi_terkini['id_recipe']?>" class="meal-card bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
 
                                             <div class="h-32 relative">
                                                 <img src="<?php echo htmlspecialchars(formatImagePath($resepi_terkini['image_recipe'], "../"))?>" 
@@ -63,7 +63,7 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <!-- <div data-modal-target="resepi-modal-<?php echo $resepi_terkini['id_recipe']?>" data-modal-toggle="resepi-modal-<?php echo $resepi_terkini['id_recipe']?>" class="meal-card bg-gray-50 rounded-lg overflow-hidden"> -->
+                                        <!-- <div data-modal-target="resipi-modal-<?php echo $resepi_terkini['id_recipe']?>" data-modal-toggle="resipi-modal-<?php echo $resepi_terkini['id_recipe']?>" class="meal-card bg-gray-50 rounded-lg overflow-hidden"> -->
                                         <!-- </div> -->
                                         
                                         <?php
@@ -73,13 +73,13 @@
                             </div>
 
                             <br>
-                            <a href="./resepi/baru.php">
+                            <a href="./resipi/baru.php">
                                 <button type="button" class="text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2">
                                     <svg class="w-4.5 h-4.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
                                     </svg>
     
-                                    Resepi Baru
+                                    Resipi Baru
                                 </button>
                             </a>
                         </div>
@@ -94,11 +94,11 @@
                                         <i class="fas fa-book text-primary-700"></i>
                                     </div>
                                     <div class="flex-1">
-                                        <div class="font-medium text-gray-900">Anda menambah resepi baru</div>
+                                        <div class="font-medium text-gray-900">Anda menambah resipi baru</div>
                                         <div class="text-gray-600">Salad Ayam Madu</div>
                                         <div class="text-sm text-gray-500 mt-1">Hari ini, 10:24 AM</div>
                                     </div>
-                                    <span class="badge badge-primary">Resepi</span>
+                                    <span class="badge badge-primary">Resipi</span>
                                 </div>
                                 
                                 <div class="flex items-start">
@@ -118,7 +118,7 @@
                                         <i class="fas fa-heart text-yellow-700"></i>
                                     </div>
                                     <div class="flex-1">
-                                        <div class="font-medium text-gray-900">Resepi ditambah ke kegemaran</div>
+                                        <div class="font-medium text-gray-900">Resipi ditambah ke kegemaran</div>
                                         <div class="text-gray-600">Smoothie Hijau Pagi</div>
                                         <div class="text-sm text-gray-500 mt-1">2 hari lalu, 9:15 AM</div>
                                     </div>

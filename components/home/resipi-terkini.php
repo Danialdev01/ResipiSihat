@@ -158,7 +158,7 @@ if ($totalRecipes > 0) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="recipeGrid">
             <?php if (count($recipes) > 0): ?>
                 <?php foreach($recipes as $recipe): ?>
-                    <a href="<?php echo $location_index?>/user/resepi/?id=<?php echo $recipe['id_recipe']?>">
+                    <a href="<?php echo $location_index?>/user/resipi/?id=<?php echo $recipe['id_recipe']?>">
                         <div class="recipe-card rounded border border-gray-200">
                             <div class="image-container">
                                 <div class="h-48 overflow-hidden">

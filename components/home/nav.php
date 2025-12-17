@@ -59,7 +59,7 @@
                 </div>
                 <div class="hidden md:ml-10 md:flex md:space-x-8">
                     <a href="<?php echo $location_index?>/" class="nav-link text-gray-500 hover:text-primary-600 px-3 py-2 font-medium">Utama</a>
-                    <a href="<?php echo $location_index?>/resepi-terkini.php" class="nav-link text-gray-500 hover:text-primary-600 px-3 py-2 font-medium">Resepi Terkini</a>
+                    <a href="<?php echo $location_index?>/resipi-terkini.php" class="nav-link text-gray-500 hover:text-primary-600 px-3 py-2 font-medium">Resipi Terkini</a>
                     <a href="<?php echo $location_index?>/tentang-kami.php" class="nav-link text-gray-500 hover:text-primary-600 px-3 py-2 font-medium">Tentang Kami</a>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     <div id="mobile-menu" class="md:hidden hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
             <a href="<?php echo $location_index?>/" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-primary-600">Utama</a>
-            <a href="<?php echo $location_index?>/resepi-terkini.php" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-primary-600">Resepi Terkini</a>
+            <a href="<?php echo $location_index?>/resipi-terkini.php" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-primary-600">Resipi Terkini</a>
             <a href="<?php echo $location_index?>/tentang-kami.php" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-primary-600">Tentang Kami</a>
         </div>
     </div>

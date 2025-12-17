@@ -3,7 +3,7 @@
     <div style='padding:1.1rem' class="border-b">
         <div class="flex items-center">
             <!-- <i class="fas fa-utensils text-primary-600 text-3xl mr-2"></i> -->
-            <!-- <span class="text-xl font-bold text-gray-900">Resepi<span class="text-primary-600">Sihat</span></span> -->
+            <!-- <span class="text-xl font-bold text-gray-900">Resipi<span class="text-primary-600">Sihat</span></span> -->
             <img class="h-10" src="<?php echo $location_index?>/src/assets/images/logo/logo-banner.png" alt="logo">
         </div>
     </div>
@@ -26,9 +26,21 @@
 
     <?php 
 
-        function setActive($file_name){
-            if(basename($_SERVER['PHP_SELF']) == $file_name){
+        function setActive($folder_name){
+            $current_path = $_SERVER['PHP_SELF'];
+            
+            // Extract the part after /user/
+            if (preg_match('#/user/([^/]*)#', $current_path, $matches)) {
+                $current_folder = $matches[1];
+            } else {
+                $current_folder = ''; // We're in user root
+            }
+            
+            if ($current_folder === $folder_name) {
                 echo 'active';
+            }
+            else {
+                echo $current_folder;
             }
         }
 
@@ -40,19 +52,19 @@
             <i class="fas fa-home text-gray-500 mr-3 w-5 text-center"></i>
             Dashboard
         </a>
-        <a href="<?php echo $location_index?>/user/resepi/saya.php" class="<?php setActive('saya.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
+        <a href="<?php echo $location_index?>/user/resipi/saya.php" class="<?php setActive('saya.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-book text-gray-500 mr-3 w-5 text-center"></i>
-            Resepi Saya
+            Resipi Saya
         </a>
         <a href="<?php echo $location_index?>/user/chat.php" class="<?php setActive('chat.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-robot text-gray-500 mr-3 w-5 text-center"></i>
             Nasihat Pemakanan
         </a>
-        <a href="<?php echo $location_index?>/user/pembelian/" class="<?php setActive('pembelian.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
+        <a href="<?php echo $location_index?>/user/pembelian/" class="<?php setActive('pembelian'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-shopping-cart text-gray-500 mr-3 w-5 text-center"></i>
             Senarai Belian
         </a>
-        <a href="<?php echo $location_index?>/user/resepi/komuniti.php" class="<?php setActive('komuniti.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
+        <a href="<?php echo $location_index?>/user/resipi/komuniti.php" class="<?php setActive('resipi/komuniti.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-users text-gray-500 mr-3 w-5 text-center"></i>
             Komuniti
         </a>

@@ -6,7 +6,7 @@ use Dompdf\Options;
 
 require __DIR__ . "../../../vendor/autoload.php";
 
-$connect = new PDO('mysql:host=localhost;dbname=resepisihat', 'root', 'danialdev');
+$connect = new PDO('mysql:host=localhost;dbname=resipisihat', 'root', 'danialdev');
 
 // Dapatkan jumlah orang dan user_id dari GET request
 $jumlah_orang = isset($_GET['jumlah_orang']) ? intval($_GET['jumlah_orang']) : 4;
@@ -18,7 +18,7 @@ if (!$user_id) {
 }
 
 
-// Dapatkan semua resepi yang di-bookmark oleh pengguna
+// Dapatkan semua resipi yang di-bookmark oleh pengguna
 $sql = "SELECT r.*, b.created_date_bookmark 
         FROM recipes r 
         INNER JOIN bookmarks b ON r.id_recipe = b.id_recipe 
@@ -147,7 +147,7 @@ $html = '
                 <tr>
                     <td><b>JUMLAH RESEPI</b></td>
                     <td><b>:</b></td>
-                    <td><b>' . $total_recipes . ' resepi</b></td>
+                    <td><b>' . $total_recipes . ' resipi</b></td>
                 </tr>
                 <tr>
                     <td><b>JUMLAH ORANG</b></td>
@@ -204,7 +204,7 @@ $html .= '
         <br>
         
         <div style="padding: 40px;">
-            <h3>Senarai Resepi:</h3>
+            <h3>Senarai Resipi:</h3>
             <ul>';
 foreach ($bookmarked_recipes as $recipe) {
     $html .= '<li>' . htmlspecialchars($recipe['name_recipe']) . ' (' . $recipe['cooking_time_recipe'] . ' minit)</li>';
@@ -216,7 +216,7 @@ $html .= '
         <div style="text-align: center; margin-top: 40px;">
             <hr>
             <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">
-                Dihasilkan oleh Sistem Resepi Masakan pada ' . date('d/m/Y') . '
+                Dihasilkan oleh Sistem Resipi Masakan pada ' . date('d/m/Y') . '
             </p>
         </div>
     </div>
