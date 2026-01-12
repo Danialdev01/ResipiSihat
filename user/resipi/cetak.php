@@ -5,7 +5,8 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 
-$connect = new PDO('mysql:host=localhost;dbname=resipisihat', 'root', 'danialdev');
+$connect = new PDO('mysql:host=localhost;dbname=danialir_resipisihat', 'danialir_danial', 'laksjdlasAdjasl@!');
+// $connect = new PDO('mysql:host=localhost;dbname=resipisihat', 'root', 'danialdev');
 
 require __DIR__ . "../../../vendor/autoload.php";
 

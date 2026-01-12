@@ -6,7 +6,8 @@ use Dompdf\Options;
 
 require __DIR__ . "../../../vendor/autoload.php";
 
-$connect = new PDO('mysql:host=localhost;dbname=resipisihat', 'root', 'danialdev');
+$connect = new PDO('mysql:host=localhost;dbname=danialir_resipisihat', 'danialir_danial', 'laksjdlasAdjasl@!');
+// $connect = new PDO('mysql:host=localhost;dbname=resipisihat', 'root', 'danialdev');
 
 // Dapatkan jumlah orang dan user_id dari GET request
 $jumlah_orang = isset($_GET['jumlah_orang']) ? intval($_GET['jumlah_orang']) : 4;

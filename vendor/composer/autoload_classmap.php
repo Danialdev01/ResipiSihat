@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Cloudinary\\Api\\Admin\\AdminApi' => $vendorDir . '/cloudinary/cloudinary_php/src/Api/Admin/AdminApi.php',
     'Cloudinary\\Api\\Admin\\AnalysisTrait' => $vendorDir . '/cloudinary/cloudinary_php/src/Api/Admin/AnalysisTrait.php',
     'Cloudinary\\Api\\Admin\\ApiEndPoint' => $vendorDir . '/cloudinary/cloudinary_php/src/Api/Admin/ApiEndPoint.php',
@@ -674,5 +675,9 @@ return array(
     'Google_Task_Retryable' => $vendorDir . '/google/apiclient/src/aliases.php',
     'Google_Task_Runner' => $vendorDir . '/google/apiclient/src/aliases.php',
     'Google_Utils_UriTemplate' => $vendorDir . '/google/apiclient/src/aliases.php',
+    'PhpToken' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+    'Stringable' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+    'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     '©' => $vendorDir . '/symfony/cache/Traits/ValueWrapper.php',
 );
