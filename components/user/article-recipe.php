@@ -180,10 +180,12 @@
 
                         if($user['id_user'] == $user_recipe['id_user']){
                             ?>
-                            <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-primary-600">
-                                <i class="fa fa-pencil mr-2"></i>
-                                Kemaskini
-                            </button>
+                            <a href="<?php echo $location_index?>/user/resipi/kemaskini.php?id=<?php echo $recipe['id_recipe'] ?>">
+                                <button class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white bg-primary-600">
+                                    <i class="fa fa-pencil mr-2"></i>
+                                    Kemaskini
+                                </button>
+                            </a>
 
                             <form action="<?php echo $location_index?>/backend/recipe.php" method="post">
                                 <input type="hidden" name="token" value="<?php echo $token?>">

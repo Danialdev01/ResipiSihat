@@ -6,7 +6,6 @@ function createRecipe($id_user, $name_recipe, $image_recipe, $desc_recipe, $cate
         
         $file = uploadFile(uniqid(), $image_recipe, 'recipes');
         
-        //TODO buat tag berdasarkan desc masakan dan guna AI 
         $tag_recipe = "makanan";
 
         $calories_recipe = 400;
@@ -61,6 +60,134 @@ function createRecipe($id_user, $name_recipe, $image_recipe, $desc_recipe, $cate
 
     }
 
+}
+
+function editRecipe($id_recipe, $id_user, $name_recipe, $image_recipe, $desc_recipe, $category_recipe, $tutorial_recipe, $ingredient_recipe, $calories_recipe, $cooking_time_recipe, $url_resource_recipe, $visibility_recipe, $tags_recipe, $current_image, $connect){
+    
+    try{
+        // First, check if the recipe exists and belongs to the user
+        $check_sql = $connect->prepare("SELECT id_user, image_recipe FROM recipes WHERE id_recipe = ?");
+        $check_sql->execute([$id_recipe]);
+        $recipe = $check_sql->fetch(PDO::FETCH_ASSOC);
+        
+        if(!$recipe) {
+            return encodeObj("404", "Resipi tidak ditemui", "error");
+        }
+        
+        // Check if user owns this recipe
+        if($recipe['id_user'] != $id_user) {
+            return encodeObj("403", "Anda tidak dibenarkan mengedit resipi ini!", "error");
+        }
+        
+        $image_filename = $current_image; // Default to current image
+        
+        // Check if a new image was uploaded
+        if($image_recipe && isset($image_recipe['error']) && $image_recipe['error'] == 0 && $image_recipe['size'] > 0) {
+            // Upload new image
+            $file = uploadFile(uniqid(), $image_recipe, 'recipes');
+            $file = json_decode($file, true);
+            
+            if($file['status'] == "success") {
+                // Delete old image if exists
+                if($current_image && $current_image != '' && file_exists("../../uploads/recipes/" . $current_image)) {
+                    unlink("../../uploads/recipes/" . $current_image);
+                }
+                $image_filename = $file['file_name'];
+            } else {
+                return encodeObj("400", "Ralat gambar: " . $file['message'], "error");
+            }
+        }
+        
+        // Validate and clean the ingredient_recipe JSON
+        if (!empty($ingredient_recipe)) {
+            // Check if it's already a JSON string
+            $decoded_ingredients = json_decode($ingredient_recipe, true);
+            
+            if ($decoded_ingredients === null && json_last_error() !== JSON_ERROR_NONE) {
+                // If not valid JSON, try to fix encoding issues
+                $ingredient_recipe = html_entity_decode($ingredient_recipe, ENT_QUOTES, 'UTF-8');
+                
+                // If there's still encoding issues, decode again
+                if (strpos($ingredient_recipe, '&amp;') !== false) {
+                    $ingredient_recipe = html_entity_decode($ingredient_recipe, ENT_QUOTES, 'UTF-8');
+                }
+                
+                // Now try to decode again
+                $decoded_ingredients = json_decode($ingredient_recipe, true);
+                
+                if ($decoded_ingredients === null) {
+                    // If still not valid, create empty array
+                    $ingredient_recipe = json_encode([]);
+                } else {
+                    // Re-encode as clean JSON
+                    $ingredient_recipe = json_encode($decoded_ingredients, JSON_UNESCAPED_UNICODE);
+                }
+            } else {
+                // It's already valid JSON, ensure it's properly encoded
+                $ingredient_recipe = json_encode($decoded_ingredients, JSON_UNESCAPED_UNICODE);
+            }
+        } else {
+            $ingredient_recipe = json_encode([]);
+        }
+        
+        // Clean up tags if they exist
+        if (empty($tags_recipe)) {
+            $tags_recipe = "makanan"; // Default tag
+        }
+        
+        // Update recipe in database
+        $update_recipe_sql = $connect->prepare("
+            UPDATE recipes SET 
+                name_recipe = :name_recipe,
+                desc_recipe = :desc_recipe,
+                image_recipe = :image_recipe,
+                category_recipe = :category_recipe,
+                tutorial_recipe = :tutorial_recipe,
+                ingredient_recipe = :ingredient_recipe,
+                calories_recipe = :calories_recipe,
+                cooking_time_recipe = :cooking_time_recipe,
+                url_resource_recipe = :url_resource_recipe,
+                visibility_recipe = :visibility_recipe,
+                tags_recipe = :tags_recipe
+            WHERE id_recipe = :id_recipe AND id_user = :id_user
+        ");
+        
+        $success = $update_recipe_sql->execute([
+            ":id_recipe" => $id_recipe,
+            ":id_user" => $id_user,
+            ":name_recipe" => $name_recipe,
+            ":desc_recipe" => $desc_recipe,
+            ":image_recipe" => $image_filename,
+            ":category_recipe" => $category_recipe,
+            ":tutorial_recipe" => $tutorial_recipe,
+            ":ingredient_recipe" => $ingredient_recipe,
+            ":calories_recipe" => $calories_recipe,
+            ":cooking_time_recipe" => $cooking_time_recipe,
+            ":url_resource_recipe" => $url_resource_recipe,
+            ":visibility_recipe" => $visibility_recipe,
+            ":tags_recipe" => $tags_recipe
+        ]);
+        
+        if($success) {
+            $status = encodeObj("200", "Resipi berjaya dikemaskini", "success");
+            
+            $recipe_value = [
+                "id_recipe" => $id_recipe,
+                "id_user" => $id_user,
+                "name_recipe" => $name_recipe,
+            ];
+                
+            $recipe_value = json_encode($recipe_value);
+            return addJson($status, $recipe_value);
+        } else {
+            // Get error info for debugging
+            $errorInfo = $update_recipe_sql->errorInfo();
+            return encodeObj("400", "Gagal mengemaskini resipi. Error: " . $errorInfo[2], "error");
+        }
+        
+    } catch(Exception $e) {
+        return encodeObj("400", "Ralat mengemaskini resipi. " . $e->getMessage(), "error");
+    }
 }
 
 //@ Update num 

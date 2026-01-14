@@ -47,6 +47,75 @@
         }
     }
 
+    else if(isset($_POST['update_recipe'])){
+
+        try{
+            $user = decryptUser($_SESSION[$token_name], $secret_key);
+            $id_user = $user['id_user'];
+
+            $id_recipe = validateInput($_POST['id_recipe']);
+            $name_recipe = validateInput($_POST['name_recipe']);
+            $desc_recipe = validateInput($_POST['desc_recipe']);
+            $category_recipe = validateInput($_POST['category_recipe']);
+            $tutorial_recipe = validateInput($_POST['tutorial_recipe']);
+            $ingredient_recipe = validateInput($_POST['ingredient_recipe']);
+            $calories_recipe = validateInput($_POST['calories_recipe']);
+            $cooking_time_recipe = validateInput($_POST['cooking_time_recipe']);
+            $url_resource_recipe = validateInput($_POST['url_resource_recipe']);
+            $visibility_recipe = validateInput($_POST['visibility_recipe']);
+            $tags_recipe = validateInput($_POST['tags_recipe']);
+            $current_image = validateInput($_POST['current_image']);
+
+            // Clean up tags - remove extra spaces and ensure proper format
+            $tags_recipe = trim($tags_recipe);
+            $tags_recipe = preg_replace('/\s*,\s*/', ',', $tags_recipe); // Remove spaces around commas
+            $tags_recipe = preg_replace('/,+/', ',', $tags_recipe); // Remove multiple commas
+            $tags_recipe = trim($tags_recipe, ','); // Remove leading/trailing commas
+
+            // Check if image was uploaded
+            $image_recipe = null;
+            if(isset($_FILES['image_recipe']) && $_FILES['image_recipe']['error'] == 0 && $_FILES['image_recipe']['size'] > 0) {
+                $image_recipe = $_FILES['image_recipe'];
+            }
+
+            // edit recipe
+            $editRecipe = editRecipe(
+                $id_recipe, 
+                $id_user, 
+                $name_recipe, 
+                $image_recipe, 
+                $desc_recipe, 
+                $category_recipe, 
+                $tutorial_recipe, 
+                $ingredient_recipe, 
+                $calories_recipe, 
+                $cooking_time_recipe,  
+                $url_resource_recipe, 
+                $visibility_recipe, 
+                $tags_recipe, 
+                $current_image, 
+                $connect
+            );
+            
+            $editRecipe = json_decode($editRecipe, true);
+
+            if($editRecipe['status'] == "success"){
+
+                alert_message("success", "Berjaya kemaskini recipe");
+                log_activity_message("../log/user_activity_log", "Berjaya kemaskini recipe: " . $name_recipe);
+                header("Location:" .$_SERVER['HTTP_REFERER']);
+                exit();
+            }
+            else{
+                redirectWithAlert($_SERVER['HTTP_REFERER'], "error", $editRecipe['message']);
+            }
+
+        }
+        catch(Exception $e){
+            redirectWithAlert($_SERVER['HTTP_REFERER'], "error", "Ralat kemaskini resipi: " . $e->getMessage());
+        }
+    }
+
     //@ Like recipe 
     else if(isset($_POST['like_recipe'])){
 
