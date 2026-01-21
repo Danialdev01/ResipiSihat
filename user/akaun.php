@@ -20,7 +20,7 @@
                     <div class="flex items-center mb-6">
                         <!-- Current Profile Picture -->
                         <div class="relative mr-6">
-                            <img id="current-profile-picture" src="<?php echo !empty($user['pfp_user']) ? '../uploads/profiles/'.$user['pfp_user'] : 'https://avatar.iran.liara.run/username?username=' . $user['name_user'] ; ?>" 
+                            <img id="current-profile-picture" src="<?php echo !empty($user['pfp_user']) ? '../uploads/profiles/'.$user['pfp_user'] : $location_index . '/src/assets/images/placeholder.jpg'?>" 
                                     alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-2 border-gray-300">
                             
                             <!-- Change Picture Button -->
@@ -146,7 +146,7 @@
 
                             <div class="flex flex-col items-center mb-4">
                                 <div class="relative mb-4">
-                                    <img id="image-preview" src="<?php echo !empty($user['pfp_user']) ? '../uploads/profiles/'.$user['pfp_user'] : 'https://avatar.iran.liara.run/username?username=' . $user['name_user'] ; ?>" 
+                                    <img id="image-preview" src="<?php echo !empty($user['pfp_user']) ? '../uploads/profiles/'.$user['pfp_user'] : $location_index . '/src/assets/images/placeholder.jpg' ?>" 
                                          alt="Preview" class="w-32 h-32 rounded-full object-cover border-2 border-gray-300">
                                 </div>
                                 

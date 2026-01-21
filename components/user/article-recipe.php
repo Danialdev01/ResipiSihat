@@ -6,7 +6,7 @@
     
     // Fetch approved comments for this recipe
     $comments_sql = $connect->prepare("
-        SELECT c.*, u.name_user 
+        SELECT c.*, u.name_user, u.pfp_user
         FROM comments c 
         JOIN users u ON c.id_user = u.id_user 
         WHERE c.id_recipe = :recipe_id AND c.status_comment = 1
@@ -72,7 +72,8 @@
                 if($user['id_user'] != $user_recipe['id_user']){
                     ?>
                     <div class="flex items-center gap-4">
-                        <img class="w-10 h-10 rounded-full" src="<?php echo !empty($user_recipe['pfp_user']) ? $location_index .'/uploads/profiles/'.$user_recipe['pfp_user'] : 'https://avatar.iran.liara.run/username?username=' . $user_recipe['name_user'] ; ?>" alt="Profile Picture">
+                        
+                        <img class="w-10 h-10 rounded-full" src="<?php echo !empty($user['pfp_user']) ? $location_index .'/uploads/profiles/'.$user['pfp_user'] : $location_index .'/src/assets/images/placeholder.jpg' ; ?>" alt="Profile Picture">
                         <div class="font-medium">
                             <div><?php echo htmlspecialchars($user_recipe['name_user'])?></div>
                             <div class="text-sm text-gray-500">Joined in <?php echo date_format($created_date_user ,"M Y")?></div>
@@ -345,7 +346,7 @@
                                         $user_sql->execute([':id' => $user['id_user']]);
                                         $current_user = $user_sql->fetch(PDO::FETCH_ASSOC);
                                     ?>
-                                    <img src="<?php echo !empty($current_user['pfp_user']) ? $location_index .'/uploads/profiles/'.$current_user['pfp_user'] : 'https://avatar.iran.liara.run/username?username=' . $current_user['name_user'] ; ?>" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
+                                    <img src="<?php echo !empty($current_user['pfp_user']) ? $location_index .'/uploads/profiles/'.$current_user['pfp_user'] : $location_index . '/src/assets/images/placeholder.jpg'; ?>" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
                                 </div>
                                 <div class="flex-1">
                                     <textarea 
@@ -385,7 +386,7 @@
                             <div class="flex gap-4">
                                 <div class="flex-shrink-0">
                                     <img 
-                                        src="<?php echo !empty($comment['pfp_user']) ? $location_index .'/uploads/profiles/'.$comment['pfp_user'] : 'https://avatar.iran.liara.run/username?username=' . $comment['name_user'] ; ?>" 
+                                        src="<?php echo !empty($comment['pfp_user']) ? $location_index .'/uploads/profiles/'.$comment['pfp_user'] : $location_index . '/src/assets/images/placeholder.jpg' ?>" 
                                         alt="<?php echo htmlspecialchars($comment['name_user']); ?>" 
                                         class="w-10 h-10 rounded-full object-cover"
                                     >

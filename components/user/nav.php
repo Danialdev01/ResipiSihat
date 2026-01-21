@@ -13,7 +13,7 @@
             <a class='flex items-center space-x-3' href="<?php echo $location_index?>/user/akaun.php">
                 <div class="relative">
 
-                    <img src="<?php echo !empty($user['pfp_user']) ? $location_index .'/uploads/profiles/'.$user['pfp_user'] : 'https://avatar.iran.liara.run/username?username=' . $user['name_user'] ; ?>" alt="Profile" class="w-12 h-12 rounded-full object-cover border-2 border-primary-200">
+                    <img src="<?php echo !empty($user['pfp_user']) ? $location_index .'/uploads/profiles/'.$user['pfp_user'] : $location_index .'/src/assets/images/placeholder.jpg' ; ?>" alt="Profile" class="w-12 h-12 rounded-full object-cover border-2 border-primary-200">
                     <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
                 </div>
                 <div>
