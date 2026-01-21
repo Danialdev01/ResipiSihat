@@ -73,7 +73,7 @@
                     ?>
                     <div class="flex items-center gap-4">
                         
-                        <img class="w-10 h-10 rounded-full" src="<?php echo !empty($user['pfp_user']) ? $location_index .'/uploads/profiles/'.$user['pfp_user'] : $location_index .'/src/assets/images/placeholder.jpg' ; ?>" alt="Profile Picture">
+                        <img class="w-10 h-10 rounded-full" src="<?php echo !empty($user_recipe['pfp_user']) ? $location_index .'/uploads/profiles/'.$user_recipe['pfp_user'] : $location_index .'/src/assets/images/placeholder.jpg' ; ?>" alt="Profile Picture">
                         <div class="font-medium">
                             <div><?php echo htmlspecialchars($user_recipe['name_user'])?></div>
                             <div class="text-sm text-gray-500">Joined in <?php echo date_format($created_date_user ,"M Y")?></div>
