@@ -147,79 +147,10 @@
                     <!-- Right Column -->
                     <div>
                         <!-- Shopping List -->
-                        <div class="card bg-white rounded-xl p-6 mb-6">
-                            <div class="flex justify-between items-center mb-6">
-                                <h3 class="text-xl font-bold text-gray-900">Senarai Belian</h3>
-                                <button class="text-primary-600 hover:text-primary-800">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="space-y-4">
-                                <div class="flex items-center">
-                                    <input type="checkbox" class="rounded text-primary-600 mr-3">
-                                    <div class="flex-1">
-                                        <div class="text-gray-900">Sayur Bayam</div>
-                                        <div class="text-sm text-gray-500">1 ikat</div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <input type="checkbox" class="rounded text-primary-600 mr-3" checked>
-                                    <div class="flex-1">
-                                        <div class="text-gray-900 line-through">Dada Ayam</div>
-                                        <div class="text-sm text-gray-500">500g</div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <input type="checkbox" class="rounded text-primary-600 mr-3">
-                                    <div class="flex-1">
-                                        <div class="text-gray-900">Beri Campuran</div>
-                                        <div class="text-sm text-gray-500">1 paket</div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <input type="checkbox" class="rounded text-primary-600 mr-3">
-                                    <div class="flex-1">
-                                        <div class="text-gray-900">Oat Rolled</div>
-                                        <div class="text-sm text-gray-500">500g</div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <input type="checkbox" class="rounded text-primary-600 mr-3" checked>
-                                    <div class="flex-1">
-                                        <div class="text-gray-900 line-through">Telur</div>
-                                        <div class="text-sm text-gray-500">6 biji</div>
-                                    </div>
-                                    <button class="text-gray-400 hover:text-gray-600">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <button class="mt-6 w-full text-center py-3 bg-primary-600 hover:bg-primary-700 rounded-lg text-white font-medium">
-                                Simpan Senarai
-                            </button>
-                        </div>
                         
                         <!-- Health Goals -->
                         <div class="card bg-white rounded-xl p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-6">Maklumat Terkini</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-6">Peringatan Pemakanan</h3>
                             
                             <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                                 <div class="flex">
@@ -227,7 +158,6 @@
                                         <i class="fas fa-lightbulb text-yellow-500 text-xl"></i>
                                     </div>
                                     <div class="ml-3">
-                                        <h4 class="text-sm font-medium text-yellow-800">Petua Hari Ini</h4>
                                         <div class="mt-1 text-sm text-yellow-700">
                                             Minum segelas air 30 minit sebelum makan untuk mengawal selera.
                                         </div>
