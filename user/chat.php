@@ -506,8 +506,6 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                             </div>
 
                             <!-- Recipe Results Section -->
-                        </div>
-                        <div class="">
                             <div class="card bg-white rounded-xl shadow-lg p-4 md:p-6">
                                 <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Resipi Disyorkan</h3>
                                 <div id="recipe-results" class="recipe-results">
@@ -566,10 +564,88 @@ $conversation = isset($_SESSION['conversation']) ? array_slice($_SESSION['conver
                                     <?php endif; ?>
                                 </div>
                             </div>
-
                         </div>
                         
                         <!-- Right Column -->
+                        <div>
+                            <!-- Your Recipes -->
+                            <div class="card bg-white rounded-xl shadow-lg p-4 md:p-6 mb-4 md:mb-6">
+                                <div class="flex justify-between items-center mb-4 md:mb-6">
+                                    <h3 class="text-lg md:text-xl font-bold text-gray-900">Resipi Terkini</h3>
+                                    <a href="<?php echo $location_index?>/user/resipi/komuniti.php" class="text-primary-600 hover:text-primary-800 font-medium text-sm md:text-base">
+                                        Lihat <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <?php 
+                                        $resepi_terkini_sql = $connect->prepare("SELECT * FROM recipes WHERE id_user = :id_user AND status_recipe = 1 ORDER BY created_date_recipe DESC LIMIT 3");
+                                        $resepi_terkini_sql->execute([
+                                            ":id_user" => $user['id_user']
+                                        ]);
+
+                                        while($resepi_terkini = $resepi_terkini_sql->fetch(PDO::FETCH_ASSOC)):
+                                    ?>
+                                        <a href="./resipi/?id=<?php echo $resepi_terkini['id_recipe']?>" class="block">
+                                            <div class="flex items-center bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition">
+                                                <div class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden flex-shrink-0">
+                                                    <img src="<?php echo htmlspecialchars(formatImagePath($resepi_terkini['image_recipe'], "../"))?>" 
+                                                         alt="<?php echo htmlspecialchars($resepi_terkini['name_recipe'] ?? '')?>" 
+                                                         class="w-full h-full object-cover">
+                                                </div>
+                                                <div class="ml-3 md:ml-4 flex-1">
+                                                    <h4 class="font-bold text-gray-900 text-sm md:text-base line-clamp-1">
+                                                        <?php echo htmlspecialchars($resepi_terkini['name_recipe'] ?? '')?>
+                                                    </h4>
+                                                    <div class="flex items-center text-gray-600 text-xs md:text-sm mt-1">
+                                                        <span class="flex items-center mr-3">
+                                                            <i class="fas fa-clock mr-1"></i>
+                                                            <?php echo htmlspecialchars($resepi_terkini['cooking_time_recipe'] ?? '')?> min
+                                                        </span>
+                                                        <span class="flex items-center">
+                                                            <i class="fas fa-fire mr-1"></i>
+                                                            <?php echo htmlspecialchars($resepi_terkini['calories_recipe'] ?? '')?> kkal
+                                                        </span>
+                                                    </div>
+                                                    <span class="inline-block mt-1 bg-primary-100 text-primary-800 text-xs px-2 py-0.5 rounded">
+                                                        <?php echo htmlspecialchars($resepi_terkini['category_recipe'] ?? '')?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    <?php endwhile; ?>
+                                </div>
+
+                                <div class="mt-6">
+                                    <a href="./resipi/baru.php" class="block w-full">
+                                        <button type="button" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center">
+                                            <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+                                            </svg>
+                                            Resipi Baru
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Health Goals -->
+                            <div class="card bg-white rounded-xl shadow-lg p-4 md:p-6">
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 md:mb-6">Peringatan Pemakanan</h3>
+                                
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-lightbulb text-yellow-500 text-lg md:text-xl"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <div class="text-sm md:text-base text-yellow-700">
+                                                Minum segelas air 30 minit sebelum makan untuk mengawal selera.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
