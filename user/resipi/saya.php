@@ -180,23 +180,26 @@
                         <div  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="recipeGrid">
                             <?php if (count($recipes) > 0): ?>
                                 <?php foreach($recipes as $recipe): ?>
-                                    <div data-modal-target="resipi-modal-<?php echo $recipe['id_recipe']?>" data-modal-toggle="resipi-modal-<?php echo $recipe['id_recipe']?>" class="meal-card bg-gray-50 rounded-lg overflow-hidden">
-                                        <div class="h-32 relative">
-                                            <img src="<?php echo htmlspecialchars(formatImagePath($recipe['image_recipe'], "../../"))?>" 
-                                                alt="<?php echo htmlspecialchars($recipe['name_recipe'] ?? '')?>" 
-                                                class="w-full h-full object-cover">
-                                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
-                                                <div class="text-white font-semibold"><?php echo htmlspecialchars($recipe['category_recipe'] ?? '')?></div>
+                                    <a href="./?id=<?php echo htmlspecialchars($recipe['id_recipe'] ?? '')?>">
+
+                                        <div class="meal-card bg-gray-50 rounded-lg overflow-hidden">
+                                            <div class="h-32 relative">
+                                                <img src="<?php echo htmlspecialchars(formatImagePath($recipe['image_recipe'], "../../"))?>" 
+                                                    alt="<?php echo htmlspecialchars($recipe['name_recipe'] ?? '')?>" 
+                                                    class="w-full h-full object-cover">
+                                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                                                    <div class="text-white font-semibold"><?php echo htmlspecialchars($recipe['category_recipe'] ?? '')?></div>
+                                                </div>
+                                            </div>
+                                            <div class="p-4">
+                                                <div class="font-bold mb-1"><?php echo htmlspecialchars($recipe['name_recipe'] ?? '')?></div>
+                                                <div class="text-sm text-gray-600 flex justify-between">
+                                                    <span><i class="fas fa-clock mr-1"></i><?php echo htmlspecialchars($recipe['cooking_time_recipe'] ?? '')?></span>
+                                                    <span><i class="fas fa-fire mr-1"></i><?php echo htmlspecialchars($recipe['calories_recipe'] ?? '')?></span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="p-4">
-                                            <div class="font-bold mb-1"><?php echo htmlspecialchars($recipe['name_recipe'] ?? '')?></div>
-                                            <div class="text-sm text-gray-600 flex justify-between">
-                                                <span><i class="fas fa-clock mr-1"></i><?php echo htmlspecialchars($recipe['cooking_time_recipe'] ?? '')?></span>
-                                                <span><i class="fas fa-fire mr-1"></i><?php echo htmlspecialchars($recipe['calories_recipe'] ?? '')?></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </a>
 
                                 <?php endforeach; ?>
                             <?php endif; ?>
