@@ -158,31 +158,29 @@ if ($totalRecipes > 0) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="recipeGrid">
             <?php if (count($recipes) > 0): ?>
                 <?php foreach($recipes as $recipe): ?>
-                    <a href="<?php echo $location_index?>/user/resipi/?id=<?php echo $recipe['id_recipe']?>">
-                        <div class="recipe-card rounded border border-gray-200">
-                            <div class="image-container">
+                    <a href="<?php echo $location_index?>/user/resipi/?id=<?php echo $recipe['id_recipe']?>" class="block h-full">
+                        <div class="recipe-card rounded border border-gray-200 flex flex-col h-full">
+                            <div class="image-container flex-shrink-0">
                                 <div class="h-48 overflow-hidden">
                                     <img src="<?php echo htmlspecialchars(formatImagePath($recipe['image_recipe'], $location_index ."/"))?>" 
-                                            alt="<?php echo htmlspecialchars($recipe['name_recipe'] ?? ''); ?>" 
-                                            class="w-full h-full object-cover">
+                                        alt="<?php echo htmlspecialchars($recipe['name_recipe'] ?? ''); ?>" 
+                                        class="w-full h-full object-cover">
                                 </div>
                             </div>
-                            <div class="px-6 pb-4">
-                                <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2">
+                            <div class="px-6 pb-4 flex flex-col flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2 line-clamp-1">
                                     <?php echo htmlspecialchars($recipe['name_recipe'] ?? ''); ?>
                                 </h3>
                                 <?php
-
                                     $name_user_sql = $connect->prepare("SELECT name_user FROM users WHERE id_user = :id_user");
                                     $name_user_sql->execute([":id_user" => $recipe['id_user']]);
                                     $name_user = $name_user_sql->fetch(PDO::FETCH_ASSOC);
-
                                 ?>
-                                <p class="text-gray-600 mb-4">
+                                <p class="text-gray-600 mb-4 line-clamp-2 flex-grow">
                                     <?php echo htmlspecialchars($recipe['desc_recipe'] ?? ''); ?>
                                 </p>
-                                <div class="flex justify-between items-start">
-                                    <div class="mb-4">
+                                <div>
+                                    <div class="flex justify-between items-start mb-4">
                                         <?php 
                                         $categoryClasses = [
                                             'sarapan' => 'bg-blue-100 text-blue-800',
@@ -195,18 +193,18 @@ if ($totalRecipes > 0) {
                                         <span class="text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm <?php echo $class; ?>">
                                             <?php echo htmlspecialchars($recipe['category_recipe'] ?? ''); ?>
                                         </span>
+                                        <div class="flex items-center text-yellow-500">
+                                            <span class="ml-1 text-gray-700"><?php echo htmlspecialchars($recipe['rating_recipe'] ?? ''); ?></span>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center text-yellow-500">
-                                        <span class="ml-1 text-gray-700"><?php echo htmlspecialchars($recipe['rating_recipe'] ?? ''); ?></span>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <div class="text-sm text-gray-800 font-bold"><?php echo explode(' ', trim($name_user['name_user']))[0]?></div>
-                                    <div class="flex items-center text-gray-500">
-                                        <i class="fas fa-clock mr-2"></i>
-                                        <span class="cooking-time"><?php echo htmlspecialchars($recipe['cooking_time_recipe'] ?? ''); ?> minit</span>
-                                        <i class="fas fa-fire ml-4 mr-2"></i>
-                                        <span class="calories"><?php echo htmlspecialchars($recipe['calories_recipe'] ?? ''); ?> kalori</span>
+                                    <div class="flex justify-between items-center">
+                                        <div class="text-sm text-gray-800 font-bold"><?php echo explode(' ', trim($name_user['name_user']))[0]?></div>
+                                        <div class="flex items-center text-gray-500">
+                                            <i class="fas fa-clock mr-2"></i>
+                                            <span class="cooking-time"><?php echo htmlspecialchars($recipe['cooking_time_recipe'] ?? ''); ?> minit</span>
+                                            <i class="fas fa-fire ml-4 mr-2"></i>
+                                            <span class="calories"><?php echo htmlspecialchars($recipe['calories_recipe'] ?? ''); ?> kalori</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

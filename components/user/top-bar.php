@@ -15,9 +15,10 @@
             </button> -->
         </div>
         <div class="relative">
-            <button class="p-2 text-gray-500 hover:text-gray-700">
-                <i class="fas fa-envelope text-xl"></i>
-                <span class="notification-dot"></span>
+            <button class="p-2 text-white">
+                <!-- <i class="fas fa-envelope text-xl"></i> -->
+                /
+                <!-- <span class="notification-dot"></span> -->
             </button>
         </div>
         <div class="relative">

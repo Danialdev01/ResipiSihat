@@ -142,16 +142,21 @@
 <?php 
 
     function formatImagePath($input, $locationRef) {
+        // If input is null, empty, or whitespace only, return default placeholder
+        if (is_null($input) || trim($input) === '') {
+            return rtrim($locationRef, '/') . '/src/assets/images/recipe_placeholder.png';
+        }
+
         // Check if the string is already a full URL (starts with http:// or https://)
         if (preg_match('/^https?:\/\//i', $input)) {
             return $input;
         }
-        
+
         // Check if the string is already a relative path with directories
         if (strpos($input, '/') !== false) {
             return $input;
         }
-        
+
         // If it's just a filename, add the location reference and appropriate path
         return rtrim($locationRef, '/') . '/uploads/recipes/' . ltrim($input, '/');
     }

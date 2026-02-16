@@ -20,7 +20,7 @@ function getUserRecipeLikes($userId, $connect) {
                     <div class="text-gray-500">Jumlah Resipi</div>
 
                     <?php 
-                        $bil_resepi_sql = $connect->prepare("SELECT COUNT(*) AS bil_resepi, created_date_recipe FROM recipes WHERE id_user = :id_user");
+                        $bil_resepi_sql = $connect->prepare("SELECT COUNT(*) AS bil_resepi, created_date_recipe FROM recipes WHERE id_user = :id_user AND status_recipe = 1");
                         $bil_resepi_sql->execute([
                             ":id_user" => $user['id_user']
                         ]);
@@ -39,18 +39,18 @@ function getUserRecipeLikes($userId, $connect) {
     <div class="card bg-white rounded-xl p-5">
         <div class="flex items-center justify-between">
             <div>
-                <div class="text-gray-500">Pesanan Aktif</div>
+                <div class="text-gray-500">Resipi Tersimpan</div>
                 <?php
-                    $bil_pesanan_sql = $connect->prepare("SELECT COUNT(*) AS bil_pesanan FROM orderings WHERE id_user = :id_user");
-                    $bil_pesanan_sql->execute([
+                    $bookmark_user_sql = $connect->prepare("SELECT COUNT(*) AS bil_bookmark FROM bookmarks WHERE id_user = :id_user");
+                    $bookmark_user_sql->execute([
                         ":id_user" => $user['id_user']
                     ]);
-                    $bil_pesanan = $bil_pesanan_sql->fetch(PDO::FETCH_ASSOC);
+                    $bookmark_user = $bookmark_user_sql->fetch(PDO::FETCH_ASSOC);
                 ?>
-                <div class="text-2xl font-bold mt-1"><?php echo $bil_pesanan['bil_pesanan'] ?></div>
+                <div class="text-2xl font-bold mt-1"><?php echo $bookmark_user['bil_bookmark'] ?></div>
             </div>
             <div class="bg-green-100 p-3 rounded-lg">
-                <i class="fas fa-calendar-check text-green-700 text-2xl"></i>
+                <i class="fas fa-bookmark text-green-700 text-2xl"></i>
             </div>
         </div>
     </div>
@@ -70,18 +70,17 @@ function getUserRecipeLikes($userId, $connect) {
     <div class="card bg-white rounded-xl p-5">
         <div class="flex items-center justify-between">
             <div>
-                <div class="text-gray-500">Pengikut</div>
+                <div class="text-gray-500">Komen Sendiri</div>
                 <?php 
-
-                    $bil_follow_sql = $connect->prepare("SELECT COUNT(*) AS bil_follow FROM follows WHERE id_user = :id_user");
-                    $bil_follow_sql->execute([
-                        "id_user" => $user['id_user']
+                
+                    $bil_komen_sql = $connect->prepare("SELECT COUNT(*) AS bil_komen FROM comments WHERE id_user = :id_user");
+                    $bil_komen_sql->execute([
+                        ":id_user" => $user['id_user']
                     ]);
-
-                    $bil_follow = $bil_follow_sql->fetch(PDO::FETCH_ASSOC);
+                    $bil_komen = $bil_komen_sql->fetch(PDO::FETCH_ASSOC);
 
                 ?>
-                <div class="text-2xl font-bold mt-1"><?php echo $bil_follow['bil_follow']?></div>
+                <div class="text-2xl font-bold mt-1"><?php echo $bil_komen['bil_komen']?></div>
             </div>
             <div class="bg-purple-100 p-3 rounded-lg">
                 <i class="fas fa-user-group text-purple-700 text-2xl"></i>

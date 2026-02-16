@@ -27,8 +27,15 @@
             $url_resource_recipe = validateInput($_POST['url_resource_recipe']);
             $visibility_recipe = validateInput($_POST['visibility_recipe']);
 
+            if(isset($_FILES['image_recipe']) && $_FILES['image_recipe']['error'] == 0 && $_FILES['image_recipe']['size'] > 0) {
+                $image_recipe = $_FILES['image_recipe'];
+            }
+            else{
+                $image_recipe = null;
+            }
+
             // create recipe
-            $createRecipe = createRecipe($id_user, $name_recipe, $_FILES['image_recipe'], $desc_recipe, $category_recipe, $tutorial_recipe, $ingredient_recipe, $cooking_time_recipe,  $url_resource_recipe, $visibility_recipe, $connect);
+            $createRecipe = createRecipe($id_user, $name_recipe, $image_recipe, $desc_recipe, $category_recipe, $tutorial_recipe, $ingredient_recipe, $cooking_time_recipe,  $url_resource_recipe, $visibility_recipe, $connect);
             $createRecipe = json_decode($createRecipe, true);
 
             if($createRecipe['status'] == "success"){

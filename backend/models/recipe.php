@@ -14,44 +14,47 @@ function createRecipe($id_user, $name_recipe, $image_recipe, $desc_recipe, $cate
 
         if($file['status'] == "success"){
 
-            $create_recipe_sql = $connect->prepare("
-                INSERT INTO recipes(id_recipe, id_user, name_recipe, desc_recipe, image_recipe, category_recipe, tutorial_recipe, ingredient_recipe, calories_recipe, cooking_time_recipe, url_resource_recipe, visibility_recipe, num_likes_recipe, tags_recipe, created_date_recipe, status_recipe) 
-                VALUES 
-                (NULL, :id_user, :name_recipe, :desc_recipe, :image_recipe, :category_recipe, :tutorial_recipe, :ingredient_recipe, :calories_recipe, :cooking_time_recipe, :url_resource_recipe, :visibility_recipe, 0, :tags_recipe, NOW(), 1)
-            ");
-
-            $create_recipe_sql->execute([
-                ":id_user" => $id_user,
-                ":name_recipe" => $name_recipe,
-                ":desc_recipe" => $desc_recipe,
-                ":image_recipe" => $file['file_name'],
-                ":category_recipe" => $category_recipe,
-                ":tutorial_recipe" => $tutorial_recipe,
-                ":ingredient_recipe" => $ingredient_recipe,
-                ":calories_recipe" => $calories_recipe,
-                ":cooking_time_recipe" => $cooking_time_recipe,
-                ":url_resource_recipe" => $url_resource_recipe,
-                ":visibility_recipe" => $visibility_recipe,
-                ":tags_recipe" => $tag_recipe
-            ]);
-
-
-            $status = encodeObj("200", "Loggin Success", "success");
-
-            $recipe_value = [
-                "id_recipe" => $connect->lastInsertId(),
-                "id_user" => $id_user,
-                "name_recipe" => $name_recipe,
-            ];
-                
-            $recipe_value = json_encode($recipe_value);
-            return addJson($status, $recipe_value);
-
+            $image_recipe_file = $file['file_name'];
+            
         }
         else{
-            return encodeObj("400", "Ralat gambar", "error");
+
+            $image_recipe_file = null;
 
         }
+
+        $create_recipe_sql = $connect->prepare("
+            INSERT INTO recipes(id_recipe, id_user, name_recipe, desc_recipe, image_recipe, category_recipe, tutorial_recipe, ingredient_recipe, calories_recipe, cooking_time_recipe, url_resource_recipe, visibility_recipe, num_likes_recipe, tags_recipe, created_date_recipe, status_recipe) 
+            VALUES 
+            (NULL, :id_user, :name_recipe, :desc_recipe, :image_recipe, :category_recipe, :tutorial_recipe, :ingredient_recipe, :calories_recipe, :cooking_time_recipe, :url_resource_recipe, :visibility_recipe, 0, :tags_recipe, NOW(), 1)
+        ");
+
+        $create_recipe_sql->execute([
+            ":id_user" => $id_user,
+            ":name_recipe" => $name_recipe,
+            ":desc_recipe" => $desc_recipe,
+            ":image_recipe" => $image_recipe_file,
+            ":category_recipe" => $category_recipe,
+            ":tutorial_recipe" => $tutorial_recipe,
+            ":ingredient_recipe" => $ingredient_recipe,
+            ":calories_recipe" => $calories_recipe,
+            ":cooking_time_recipe" => $cooking_time_recipe,
+            ":url_resource_recipe" => $url_resource_recipe,
+            ":visibility_recipe" => $visibility_recipe,
+            ":tags_recipe" => $tag_recipe
+        ]);
+
+
+        $status = encodeObj("200", "Loggin Success", "success");
+
+        $recipe_value = [
+            "id_recipe" => $connect->lastInsertId(),
+            "id_user" => $id_user,
+            "name_recipe" => $name_recipe,
+        ];
+            
+        $recipe_value = json_encode($recipe_value);
+        return addJson($status, $recipe_value);
 
     }
     catch(Exception $e){

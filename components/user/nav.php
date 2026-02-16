@@ -50,7 +50,7 @@
         <div class="px-2 text-xs uppercase text-gray-500 font-semibold mb-2 pl-5">Menu Utama</div>
         <a href="<?php echo $location_index?>/user/" class="<?php setActive('index.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-home text-gray-500 mr-3 w-5 text-center"></i>
-            Dashboard
+            Utama
         </a>
         <a href="<?php echo $location_index?>/user/resipi/saya.php" class="<?php setActive('saya.php'); ?> nav-link flex items-center py-3 px-5 text-gray-700">
             <i class="fas fa-book text-gray-500 mr-3 w-5 text-center"></i>
