@@ -12,12 +12,15 @@
                     <button data-modal-target="signin-modal" data-modal-toggle="signin-modal" class="mb-4 sm:mb-0 btn-primary bg-primary-600 hover:bg-primary-700 text-white px-8 py-3.5 rounded-lg font-medium text-lg">
                         Mula Sekarang
                     </button>
-                    <a href="./resipi-terkini.php">
-                        <button class="flex items-center justify-center px-6 py-3.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition">
-                            <i class="fas fa-bowl-rice text-primary-600 mr-2 text-xl"></i>
-                            Lihat Resipi
-                        </button>
-                    </a>
+                    <center>
+
+                        <a class="" href="./resipi-terkini.php">
+                            <button class="flex items-center justify-center px-6 py-3.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition">
+                                <i class="fas fa-bowl-rice text-primary-600 mr-2 text-xl"></i>
+                                Lihat Resipi
+                            </button>
+                        </a>
+                    </center>
                 </div>
                 
             <div class="mt-12 flex flex-wrap gap-8">
